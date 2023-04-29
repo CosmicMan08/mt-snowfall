@@ -1,0 +1,115 @@
+[gd_scene load_steps=9 format=3 uid="uid://cavm73psebdq3"]
+
+[ext_resource type="AudioStream" uid="uid://blcbsn1f08omq" path="res://climb.wav" id="1_10ijw"]
+[ext_resource type="Script" path="res://Music.gd" id="2_2tdjm"]
+[ext_resource type="TileSet" uid="uid://wafvvxlnolxn" path="res://tileset.tres" id="3_cdu43"]
+[ext_resource type="PackedScene" uid="uid://mky1a1kvcyja" path="res://fella.tscn" id="4_71aaw"]
+[ext_resource type="PackedScene" uid="uid://dpwgaqgk0qsvs" path="res://platform.tscn" id="5_76htb"]
+[ext_resource type="PackedScene" uid="uid://dv8p03bqnkbkf" path="res://air_block.tscn" id="6_nm1jj"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_xypl7"]
+a = Vector2(0, 240)
+b = Vector2(256, 240)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kv6lq"]
+size = Vector2(256, 8)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_10ijw")
+volume_db = -9.127
+autoplay = true
+script = ExtResource("2_2tdjm")
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2(0, -304)
+tile_set = ExtResource("3_cdu43")
+cell_quadrant_size = 8
+format = 2
+layer_0/tile_data = PackedInt32Array(-589794, 65536, 0, -655330, 0, 0, -589795, 65536, 0, -655331, 0, 0, -589796, 65536, 0, -655332, 0, 0, -589797, 65536, 0, -655333, 0, 0, -589798, 65536, 0, -655334, 0, 0, -589799, 65536, 0, -655335, 0, 0, -589800, 65536, 0, -655336, 0, 0, -589801, 65536, 0, -655337, 0, 0, -589802, 65536, 0, -655338, 0, 0, -589803, 65536, 0, -655339, 0, 0, -589804, 65536, 0, -655340, 0, 0, -589805, 65536, 0, -655341, 0, 0, -589806, 65536, 0, -655342, 0, 0, -589807, 65536, 0, -655343, 0, 0, -589808, 65536, 0, -655344, 65536, 0, -589810, 65536, 0, -655346, 65536, 0, -589811, 65536, 0, -655347, 0, 0, -589812, 65536, 0, -655348, 0, 0, -589813, 65536, 0, -655349, 0, 0, -589814, 65536, 0, -655350, 0, 0, -589815, 65536, 0, -655351, 0, 0, -589816, 65536, 0, -655352, 0, 0, -589817, 65536, 0, -655353, 0, 0, -589818, 65536, 0, -655354, 0, 0, -589819, 65536, 0, -655355, 0, 0, -589820, 65536, 0, -655356, 0, 0, -589821, 65536, 0, -655357, 0, 0, -589822, 65536, 0, -655358, 0, 0, -589823, 65536, 0, -655359, 0, 0, -589824, 65536, 0, -655360, 0, 0, -655329, 0, 0, -589793, 65536, 0, -983027, 0, 0, -983023, 0, 0, -983026, 65536, 0, -983025, 65536, 0, -983024, 65536, 0, -1179626, 0, 0, -1179621, 0, 0, -1179622, 65536, 0, -1179623, 65536, 0, -1179624, 65536, 0, -1179625, 65536, 0, -1769469, 65536, 0, -1769468, 65536, 0, -1769467, 65536, 0, -1769466, 65536, 0, -1769465, 65536, 0, -1769464, 65536, 0, -1769463, 65536, 0, -1769462, 65536, 0, -1769461, 65536, 0, -1834997, 0, 0, -1834998, 0, 0, -1835000, 0, 0, -1835001, 0, 0, -1835002, 0, 0, -1835003, 0, 0, -1835004, 0, 0, -1834999, 0, 0, -2883582, 0, 0, -2883581, 0, 0, -3145722, 0, 0, -3145719, 0, 0, -3145720, 0, 0, -3145721, 0, 0, -3145718, 0, 0, -3145717, 0, 0, -3145716, 0, 0, -3145715, 0, 0, -3145714, 0, 0, -3145713, 0, 0, -3145712, 65536, 0, -3211248, 65536, 0, -3276784, 65536, 0, -3342320, 65536, 0, -3407856, 65536, 0, -3473392, 65536, 0, -3538928, 65536, 0, -655345, 196608, 0)
+
+[node name="NoNoClip" type="Area2D" parent="TileMap"]
+position = Vector2(0, -320)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/NoNoClip"]
+position = Vector2(0, -8)
+shape = SubResource("SegmentShape2D_xypl7")
+disabled = true
+
+[node name="Platform" parent="TileMap" instance=ExtResource("5_76htb")]
+position = Vector2(40, -168)
+
+[node name="Air Block" parent="TileMap" instance=ExtResource("6_nm1jj")]
+position = Vector2(28, -220)
+
+[node name="Platform2" parent="TileMap" instance=ExtResource("5_76htb")]
+position = Vector2(128, -304)
+
+[node name="Air Block2" parent="TileMap" instance=ExtResource("6_nm1jj")]
+position = Vector2(124, -388)
+
+[node name="TileMap2" type="TileMap" parent="."]
+position = Vector2(0, -672)
+tile_set = ExtResource("3_cdu43")
+cell_quadrant_size = 8
+format = 2
+layer_0/tile_data = PackedInt32Array(-589794, 65536, 0, -655330, 0, 0, -589795, 65536, 0, -655331, 0, 0, -589796, 65536, 0, -655332, 0, 0, -589797, 65536, 0, -655333, 0, 0, -589798, 65536, 0, -655334, 0, 0, -589799, 65536, 0, -655335, 0, 0, -589800, 65536, 0, -655336, 0, 0, -589801, 65536, 0, -655337, 0, 0, -589802, 65536, 0, -655338, 0, 0, -589803, 65536, 0, -655339, 0, 0, -589804, 65536, 0, -655340, 0, 0, -589805, 65536, 0, -655341, 0, 0, -589806, 65536, 0, -655342, 0, 0, -589807, 65536, 0, -655343, 0, 0, -589808, 65536, 0, -655344, 65536, 0, -589810, 65536, 0, -655346, 65536, 0, -589811, 65536, 0, -655347, 0, 0, -589812, 65536, 0, -655348, 0, 0, -589813, 65536, 0, -655349, 0, 0, -589814, 65536, 0, -655350, 0, 0, -589815, 65536, 0, -655351, 0, 0, -589816, 65536, 0, -655352, 0, 0, -589817, 65536, 0, -655353, 0, 0, -589818, 65536, 0, -655354, 0, 0, -589819, 65536, 0, -655355, 0, 0, -589820, 65536, 0, -655356, 0, 0, -589821, 65536, 0, -655357, 0, 0, -589822, 65536, 0, -655358, 0, 0, -589823, 65536, 0, -655359, 0, 0, -589824, 65536, 0, -655360, 0, 0, -655329, 0, 0, -589793, 65536, 0, -983027, 0, 0, -983023, 0, 0, -983026, 65536, 0, -983025, 65536, 0, -983024, 65536, 0, -1179626, 0, 0, -1179621, 0, 0, -1179622, 65536, 0, -1179623, 65536, 0, -1179624, 65536, 0, -1179625, 65536, 0, -1769469, 65536, 0, -1769468, 65536, 0, -1769467, 65536, 0, -1769466, 65536, 0, -1769465, 65536, 0, -1769464, 65536, 0, -1769463, 65536, 0, -1769462, 65536, 0, -1769461, 65536, 0, -1834997, 0, 0, -1834998, 0, 0, -1835000, 0, 0, -1835001, 0, 0, -1835002, 0, 0, -1835003, 0, 0, -1835004, 0, 0, -1834999, 0, 0, -2883582, 0, 0, -2883581, 0, 0, -3145722, 0, 0, -3145719, 0, 0, -3145720, 0, 0, -3145721, 0, 0, -3145718, 0, 0, -3145717, 0, 0, -3145716, 0, 0, -3145715, 0, 0, -3145714, 0, 0, -3145713, 0, 0, -3145712, 65536, 0, -3211248, 65536, 0, -3276784, 65536, 0, -3342320, 65536, 0, -3407856, 65536, 0, -3473392, 65536, 0, -3538928, 65536, 0, -655345, 196608, 0)
+
+[node name="NoNoClip" type="Area2D" parent="TileMap2"]
+position = Vector2(0, -320)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap2/NoNoClip"]
+position = Vector2(0, -8)
+shape = SubResource("SegmentShape2D_xypl7")
+disabled = true
+
+[node name="Platform" parent="TileMap2" instance=ExtResource("5_76htb")]
+position = Vector2(40, -168)
+
+[node name="Air Block" parent="TileMap2" instance=ExtResource("6_nm1jj")]
+position = Vector2(28, -220)
+
+[node name="Platform2" parent="TileMap2" instance=ExtResource("5_76htb")]
+position = Vector2(128, -304)
+
+[node name="Air Block2" parent="TileMap2" instance=ExtResource("6_nm1jj")]
+position = Vector2(124, -388)
+
+[node name="TileMap3" type="TileMap" parent="."]
+position = Vector2(0, 64)
+tile_set = ExtResource("3_cdu43")
+cell_quadrant_size = 8
+format = 2
+layer_0/tile_data = PackedInt32Array(-589794, 65536, 0, -655330, 0, 0, -589795, 65536, 0, -655331, 0, 0, -589796, 65536, 0, -655332, 0, 0, -589797, 65536, 0, -655333, 0, 0, -589798, 65536, 0, -655334, 0, 0, -589799, 65536, 0, -655335, 0, 0, -589800, 65536, 0, -655336, 0, 0, -589801, 65536, 0, -655337, 0, 0, -589802, 65536, 0, -655338, 0, 0, -589803, 65536, 0, -655339, 0, 0, -589804, 65536, 0, -655340, 0, 0, -589805, 65536, 0, -655341, 0, 0, -589806, 65536, 0, -655342, 0, 0, -589807, 65536, 0, -655343, 0, 0, -589808, 65536, 0, -655344, 65536, 0, -589810, 65536, 0, -655346, 65536, 0, -589811, 65536, 0, -655347, 0, 0, -589812, 65536, 0, -655348, 0, 0, -589813, 65536, 0, -655349, 0, 0, -589814, 65536, 0, -655350, 0, 0, -589815, 65536, 0, -655351, 0, 0, -589816, 65536, 0, -655352, 0, 0, -589817, 65536, 0, -655353, 0, 0, -589818, 65536, 0, -655354, 0, 0, -589819, 65536, 0, -655355, 0, 0, -589820, 65536, 0, -655356, 0, 0, -589821, 65536, 0, -655357, 0, 0, -589822, 65536, 0, -655358, 0, 0, -589823, 65536, 0, -655359, 0, 0, -589824, 65536, 0, -655360, 0, 0, -655329, 0, 0, -589793, 65536, 0, -983027, 0, 0, -983023, 0, 0, -983026, 65536, 0, -983025, 65536, 0, -983024, 65536, 0, -1179626, 0, 0, -1179621, 0, 0, -1179622, 65536, 0, -1179623, 65536, 0, -1179624, 65536, 0, -1179625, 65536, 0, -1769469, 65536, 0, -1769468, 65536, 0, -1769467, 65536, 0, -1769466, 65536, 0, -1769465, 65536, 0, -1769464, 65536, 0, -1769463, 65536, 0, -1769462, 65536, 0, -1769461, 65536, 0, -1834997, 0, 0, -1834998, 0, 0, -1835000, 0, 0, -1835001, 0, 0, -1835002, 0, 0, -1835003, 0, 0, -1835004, 0, 0, -1834999, 0, 0, -2883582, 0, 0, -2883581, 0, 0, -3145722, 0, 0, -3145719, 0, 0, -3145720, 0, 0, -3145721, 0, 0, -3145718, 0, 0, -3145717, 0, 0, -3145716, 0, 0, -3145715, 0, 0, -3145714, 0, 0, -3145713, 0, 0, -3145712, 65536, 0, -3211248, 65536, 0, -3276784, 65536, 0, -3342320, 65536, 0, -3407856, 65536, 0, -3473392, 65536, 0, -3538928, 65536, 0, -655345, 196608, 0)
+
+[node name="NoNoClip" type="Area2D" parent="TileMap3"]
+position = Vector2(0, -320)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap3/NoNoClip"]
+position = Vector2(0, -8)
+shape = SubResource("SegmentShape2D_xypl7")
+disabled = true
+
+[node name="Platform" parent="TileMap3" instance=ExtResource("5_76htb")]
+position = Vector2(40, -168)
+
+[node name="Air Block" parent="TileMap3" instance=ExtResource("6_nm1jj")]
+position = Vector2(28, -220)
+
+[node name="Platform2" parent="TileMap3" instance=ExtResource("5_76htb")]
+position = Vector2(128, -304)
+
+[node name="Air Block2" parent="TileMap3" instance=ExtResource("6_nm1jj")]
+position = Vector2(124, -388)
+
+[node name="fella" parent="." instance=ExtResource("4_71aaw")]
+position = Vector2(32, -400)
+
+[node name="loop point" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="loop point"]
+position = Vector2(128, -756)
+shape = SubResource("RectangleShape2D_kv6lq")
+
+[connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="_on_finished"]

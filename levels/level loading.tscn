@@ -1,0 +1,67 @@
+[gd_scene load_steps=9 format=3 uid="uid://q65jb0bntjt0"]
+
+[ext_resource type="Script" path="res://level.gd" id="1_7p1tb"]
+[ext_resource type="TileSet" uid="uid://wafvvxlnolxn" path="res://tileset.tres" id="2_x0nm1"]
+[ext_resource type="Texture2D" uid="uid://bv4add4vqmisy" path="res://mountain bg.png" id="4_u6jnp"]
+[ext_resource type="FontFile" uid="uid://bydnw86rjds40" path="res://emulogic.ttf" id="5_pw2hj"]
+[ext_resource type="Script" path="res://levels/FPS.gd" id="6_4s1l7"]
+[ext_resource type="Script" path="res://Timer.gd" id="6_uam3g"]
+[ext_resource type="AudioStream" uid="uid://blcbsn1f08omq" path="res://climb.wav" id="7_4kov7"]
+[ext_resource type="Script" path="res://Music.gd" id="8_gscwu"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_7p1tb")
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("2_x0nm1")
+format = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="ParallaxBackground2" type="ParallaxBackground" parent="CanvasLayer"]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ParallaxBackground2"]
+offset_top = 1.0
+offset_right = 256.0
+offset_bottom = 257.0
+texture = ExtResource("4_u6jnp")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="CanvasLayer"]
+layer = 0
+
+[node name="Timer" type="RichTextLabel" parent="CanvasLayer/ParallaxBackground"]
+z_index = 14
+z_as_relative = false
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 256.0
+offset_bottom = 52.0
+scale = Vector2(0.5, 0.5)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/normal_font = ExtResource("5_pw2hj")
+text = "00:00:00"
+script = ExtResource("6_uam3g")
+
+[node name="FPS" type="RichTextLabel" parent="CanvasLayer/ParallaxBackground"]
+z_index = 14
+z_as_relative = false
+offset_left = 232.0
+offset_top = 8.0
+offset_right = 280.0
+offset_bottom = 52.0
+scale = Vector2(0.5, 0.5)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/normal_font = ExtResource("5_pw2hj")
+text = "60"
+script = ExtResource("6_4s1l7")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_4kov7")
+volume_db = -9.127
+autoplay = true
+script = ExtResource("8_gscwu")
+
+[connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="_on_finished"]

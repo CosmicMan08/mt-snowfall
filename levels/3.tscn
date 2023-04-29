@@ -1,0 +1,82 @@
+[gd_scene load_steps=10 format=3 uid="uid://c1fyykoysw42g"]
+
+[ext_resource type="AudioStream" uid="uid://blcbsn1f08omq" path="res://climb.wav" id="1_e8xtc"]
+[ext_resource type="Script" path="res://Music.gd" id="2_fdsxe"]
+[ext_resource type="TileSet" uid="uid://wafvvxlnolxn" path="res://tileset.tres" id="3_vd8tp"]
+[ext_resource type="PackedScene" uid="uid://mky1a1kvcyja" path="res://fella.tscn" id="5_5pdr2"]
+[ext_resource type="FontFile" uid="uid://bydnw86rjds40" path="res://emulogic.ttf" id="5_om7ru"]
+[ext_resource type="PackedScene" uid="uid://dw8gcymkd4aax" path="res://wind_controller.tscn" id="6_q5ou1"]
+[ext_resource type="Texture2D" uid="uid://bv4add4vqmisy" path="res://mountain bg.png" id="7_7jnc4"]
+[ext_resource type="Script" path="res://Timer.gd" id="8_7fgrj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jnmqq"]
+size = Vector2(256, 8)
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(0, -256)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_e8xtc")
+volume_db = -9.127
+autoplay = true
+script = ExtResource("2_fdsxe")
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2(0, 320)
+tile_set = ExtResource("3_vd8tp")
+cell_quadrant_size = 8
+format = 2
+layer_0/tile_data = PackedInt32Array(-655357, 0, 0, -655356, 0, 0, -655358, 0, 0, -655359, 0, 0, -655360, 0, 0, -589824, 65536, 0, -589793, 65536, 0, -655329, 0, 0, -589794, 65536, 0, -655330, 0, 0, -589795, 65536, 0, -655331, 0, 0, -589796, 65536, 0, -655332, 0, 0, -589797, 65536, 0, -655333, 0, 0, -589798, 65536, 0, -655334, 0, 0, -589799, 65536, 0, -655335, 0, 0, -589800, 65536, 0, -655336, 0, 0, -589801, 65536, 0, -655337, 0, 0, -589802, 65536, 0, -655338, 0, 0, -589803, 65536, 0, -655339, 0, 0, -589804, 65536, 0, -655340, 0, 0, -589805, 65536, 0, -655341, 0, 0, -589806, 65536, 0, -655342, 0, 0, -589807, 65536, 0, -655343, 0, 0, -589811, 65536, 0, -655347, 0, 0, -589812, 65536, 0, -655348, 0, 0, -589813, 65536, 0, -655349, 0, 0, -589814, 65536, 0, -655350, 65536, 0, -589815, 65536, 0, -655351, 0, 0, -589816, 65536, 0, -655352, 0, 0, -589817, 65536, 0, -655353, 0, 0, -589818, 65536, 0, -655354, 0, 0, -589819, 65536, 0, -655355, 0, 0, -589820, 65536, 0, -589821, 65536, 0, -589822, 65536, 0, -589823, 65536, 0, -983032, 196608, 0, -983031, 262144, 0, -589808, 65536, 0, -655344, 0, 0, -589809, 65536, 0, -655345, 0, 0, -589810, 65536, 0, -655346, 0, 0, -1572859, 65536, 0, -1507323, 65536, 0, -1441787, 65536, 0, -1376251, 65536, 0, -1310715, 65536, 0, -1245184, 0, 0, -1245183, 0, 0, -1245182, 0, 0, -1245181, 0, 0, -1245180, 0, 0, -1245179, 0, 0, -1245154, 0, 0, -1245153, 0, 0, -1835003, 65536, 0, -1769467, 65536, 0, -1703931, 65536, 0, -1638395, 0, 0, -1900539, 65536, 0, -1638396, 0, 0, -1966071, 0, 0, -1966072, 0, 0, -1966073, 0, 0, -1966074, 0, 0, -1966075, 0, 0, -1966054, 0, 0, -1966055, 0, 0, -1966056, 0, 0, -1966057, 0, 0, -983034, 131072, 0, -983033, 196608, 0, -720886, 65536, 0, -786422, 65536, 0, -851958, 65536, 0, -917494, 65536, 0, -983030, 65536, 0, -1048566, 65536, 0, -1114102, 65536, 0, -1179638, 65536, 0, -1245172, 0, 0, -1245173, 0, 0, -1245174, 0, 0)
+
+[node name="fella" parent="." instance=ExtResource("5_5pdr2")]
+position = Vector2(32, 224)
+
+[node name="NoNoClip" type="Area2D" parent="."]
+position = Vector2(0, 416)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NoNoClip"]
+position = Vector2(128, -180)
+shape = SubResource("RectangleShape2D_jnmqq")
+disabled = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 191.0
+offset_top = 62.0
+offset_right = 231.0
+offset_bottom = 102.0
+scale = Vector2(0.5, 0.5)
+theme_override_fonts/normal_font = ExtResource("5_om7ru")
+text = ":3"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="ParallaxBackground2" type="ParallaxBackground" parent="CanvasLayer"]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ParallaxBackground2"]
+offset_top = 1.0
+offset_right = 256.0
+offset_bottom = 257.0
+texture = ExtResource("7_7jnc4")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="CanvasLayer"]
+layer = 0
+
+[node name="Timer" type="RichTextLabel" parent="CanvasLayer/ParallaxBackground"]
+z_index = 14
+z_as_relative = false
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 256.0
+offset_bottom = 52.0
+scale = Vector2(0.5, 0.5)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/normal_font = ExtResource("5_om7ru")
+text = "00:00:00"
+script = ExtResource("8_7fgrj")
+
+[node name="Wind Controller" parent="." instance=ExtResource("6_q5ou1")]
+position = Vector2(88, 120)
+
+[connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="_on_finished"]
