@@ -16,12 +16,14 @@ position = Vector2(0, -256)
 stream = ExtResource("1_b5cf5")
 volume_db = -9.127
 autoplay = true
+mix_target = 2
 script = ExtResource("2_po04e")
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_dkpwi")
 volume_db = -11.238
 autoplay = true
+mix_target = 2
 script = ExtResource("2_po04e")
 
 [node name="TileMap" type="TileMap" parent="."]

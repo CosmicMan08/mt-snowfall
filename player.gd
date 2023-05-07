@@ -83,24 +83,41 @@ func _physics_process(delta):
 			velocity.y = JUMP_VELOCITY
 			$AnimationPlayer.play("fox_jump")
 			$jump.playing = true
-
-		# Get the input direction and handle the movement/deceleration.
-		# As good practice, you should replace UI actions with custom gameplay actions.
+			
+		#move aaa
 		var direction = Input.get_axis("ui_left", "ui_right")
 		if direction:
 			if isFloating: velocity.x = direction * FLOAT_SPEED + wind_dir
 			else: velocity.x = direction * SPEED + wind_dir
 			
+			#if is_on_floor() and $"Turn Around".time_left == 0:
+			#	$"Turn Around".start()
+			#print(direction)
+			
 			if is_on_floor(): $AnimationPlayer.play("fox_walk")
 			
 			$Tail.flip_h = (direction<0)
 			$Body.flip_h = (direction<0)
+			old_direction = direction
 		else:
-			if is_on_floor(): $AnimationPlayer.play("fox_idle")
+			if is_on_floor():
+				if Input.is_action_pressed("ui_up"):
+					$Tail.offset.y = -1
+					$AnimationPlayer.play("fox_lookup")
+				elif Input.is_action_pressed("ui_down"):
+					$Tail.offset.y = 2
+					$AnimationPlayer.play("fox_crouch")
+				else:
+					$AnimationPlayer.play("fox_idle")
 			velocity.x = move_toward(velocity.x, 0 + wind_dir, SPEED)
+
+		#print($"Turn Around".time_left)
+		if is_on_floor() and $"Turn Around".time_left > 0 and clamp(velocity.x,-1,1) != old_direction:
+			$AnimationPlayer.current_animation = "turn_around"
 		
 		#if old_direction != direction and not old_direction and direction: # or old_direction != 0
 		#	$"Turn Around".start()
+		print($"Turn Around".time_left)
 		
 		#snowball stuff
 		if hitfall_timer > 0:
@@ -112,13 +129,6 @@ func _physics_process(delta):
 		elif not get_tree().get_root().get_node("Node2D/TileMap") in $Area2D.get_overlapping_bodies():
 			$CollisionShape2D.disabled = false
 			$Tail.visible = true
-
-		#print($"Float".time_left)
-		if $"Turn Around".time_left > 0:
-			#print(str(old_direction) + str(direction))
-			$AnimationPlayer.play("turn_around")
-			
-		old_direction = direction
 
 	was_on_floor = is_on_floor()
 

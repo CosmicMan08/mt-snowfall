@@ -26,62 +26,63 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if in_settings:
-		if mode == 0:
-			if Input.is_action_just_pressed("ui_right") or Input.is_action_just_pressed("ui_left"):
-				config.set_value("Settings", "avalanche", !config.get_value("Settings", "avalanche"))
-				$Avalanche_Value.text = str(config.get_value("Settings", "avalanche"))
+		match mode:
+			0:
+				if Input.is_action_just_pressed("ui_right") or Input.is_action_just_pressed("ui_left"):
+					config.set_value("Settings", "avalanche", !config.get_value("Settings", "avalanche"))
+					$Avalanche_Value.text = str(config.get_value("Settings", "avalanche"))
+					config.save("user://save.cfg")
+			1:
+				if Input.is_action_just_pressed("ui_right") or Input.is_action_just_pressed("ui_left"):
+					config.set_value("Settings", "fps_counter", !config.get_value("Settings", "fps_counter"))
+					$FPS_Value.text = str(config.get_value("Settings", "fps_counter"))
+					config.save("user://save.cfg")
+			2:
+				if Input.is_action_pressed("ui_cancel"):
+					if Input.is_action_just_pressed("ui_right"):
+						config.set_value("Settings", "fps_limit", config.get_value("Settings", "fps_limit") + 1)
+					if Input.is_action_just_pressed("ui_left"):
+						config.set_value("Settings", "fps_limit", config.get_value("Settings", "fps_limit") - 1)
+				else:
+					if Input.is_action_just_pressed("ui_right"):
+						config.set_value("Settings", "fps_limit", config.get_value("Settings", "fps_limit") + 5)
+					if Input.is_action_just_pressed("ui_left"):
+						config.set_value("Settings", "fps_limit", config.get_value("Settings", "fps_limit") - 5)
+				$Limit_Value.text = str(config.get_value("Settings", "fps_limit"))
 				config.save("user://save.cfg")
-		elif mode == 1:
-			if Input.is_action_just_pressed("ui_right") or Input.is_action_just_pressed("ui_left"):
-				config.set_value("Settings", "fps_counter", !config.get_value("Settings", "fps_counter"))
-				$FPS_Value.text = str(config.get_value("Settings", "fps_counter"))
+			3:
+				if Input.is_action_pressed("ui_cancel"):
+					if Input.is_action_just_pressed("ui_right"):
+						config.set_value("Settings", "music", config.get_value("Settings", "music") + 1)
+					if Input.is_action_just_pressed("ui_left"):
+						config.set_value("Settings", "music", config.get_value("Settings", "music") - 1)
+				else:
+					if Input.is_action_just_pressed("ui_right"):
+						config.set_value("Settings", "music", config.get_value("Settings", "music") + 10)
+					if Input.is_action_just_pressed("ui_left"):
+						config.set_value("Settings", "music", config.get_value("Settings", "music") - 10)
+				$Music_Value.text = str(config.get_value("Settings", "music"))
 				config.save("user://save.cfg")
-		elif mode == 2:
-			if Input.is_action_pressed("ui_cancel"):
-				if Input.is_action_just_pressed("ui_right"):
-					config.set_value("Settings", "fps_limit", config.get_value("Settings", "fps_limit") + 1)
-				if Input.is_action_just_pressed("ui_left"):
-					config.set_value("Settings", "fps_limit", config.get_value("Settings", "fps_limit") - 1)
-			else:
-				if Input.is_action_just_pressed("ui_right"):
-					config.set_value("Settings", "fps_limit", config.get_value("Settings", "fps_limit") + 5)
-				if Input.is_action_just_pressed("ui_left"):
-					config.set_value("Settings", "fps_limit", config.get_value("Settings", "fps_limit") - 5)
-			$Limit_Value.text = str(config.get_value("Settings", "fps_limit"))
-			config.save("user://save.cfg")
-		elif mode == 3:
-			if Input.is_action_pressed("ui_cancel"):
-				if Input.is_action_just_pressed("ui_right"):
-					config.set_value("Settings", "music", config.get_value("Settings", "music") + 1)
-				if Input.is_action_just_pressed("ui_left"):
-					config.set_value("Settings", "music", config.get_value("Settings", "music") - 1)
-			else:
-				if Input.is_action_just_pressed("ui_right"):
-					config.set_value("Settings", "music", config.get_value("Settings", "music") + 10)
-				if Input.is_action_just_pressed("ui_left"):
-					config.set_value("Settings", "music", config.get_value("Settings", "music") - 10)
-			$Music_Value.text = str(config.get_value("Settings", "music"))
-			config.save("user://save.cfg")
-			$AudioStreamPlayer.volume_db = config.get_value("Settings", "music") / 5 - 25
-			if config.get_value("Settings", "music") <= 0: $AudioStreamPlayer.volume_db = -100
-		elif mode == 4:
-			if Input.is_action_pressed("ui_cancel"):
-				if Input.is_action_just_pressed("ui_right"):
-					config.set_value("Settings", "sound", config.get_value("Settings", "sound") + 1)
-				if Input.is_action_just_pressed("ui_left"):
-					config.set_value("Settings", "sound", config.get_value("Settings", "sound") - 1)
-			else:
-				if Input.is_action_just_pressed("ui_right"):
-					config.set_value("Settings", "sound", config.get_value("Settings", "sound") + 10)
-				if Input.is_action_just_pressed("ui_left"):
-					config.set_value("Settings", "sound", config.get_value("Settings", "sound") - 10)
-			$Sound_Value.text = str(config.get_value("Settings", "sound"))
-			config.save("user://save.cfg")
-		elif mode == 5:
-			if Input.is_action_just_pressed("ui_right") or Input.is_action_just_pressed("ui_left"):
-				config.set_value("Settings", "snow", !config.get_value("Settings", "snow"))
-				$Snow_Value.text = str(config.get_value("Settings", "snow"))
+				$AudioStreamPlayer.volume_db = config.get_value("Settings", "music") / 5 - 25
+				if config.get_value("Settings", "music") <= 0: $AudioStreamPlayer.volume_db = -100
+			4:
+				if Input.is_action_pressed("ui_cancel"):
+					if Input.is_action_just_pressed("ui_right"):
+						config.set_value("Settings", "sound", config.get_value("Settings", "sound") + 1)
+					if Input.is_action_just_pressed("ui_left"):
+						config.set_value("Settings", "sound", config.get_value("Settings", "sound") - 1)
+				else:
+					if Input.is_action_just_pressed("ui_right"):
+						config.set_value("Settings", "sound", config.get_value("Settings", "sound") + 10)
+					if Input.is_action_just_pressed("ui_left"):
+						config.set_value("Settings", "sound", config.get_value("Settings", "sound") - 10)
+				$Sound_Value.text = str(config.get_value("Settings", "sound"))
 				config.save("user://save.cfg")
+			5:
+				if Input.is_action_just_pressed("ui_right") or Input.is_action_just_pressed("ui_left"):
+					config.set_value("Settings", "snow", !config.get_value("Settings", "snow"))
+					$Snow_Value.text = str(config.get_value("Settings", "snow"))
+					config.save("user://save.cfg")
 			
 		if Input.is_action_just_pressed("ui_up"): mode -= 1
 		if Input.is_action_just_pressed("ui_down"): mode += 1

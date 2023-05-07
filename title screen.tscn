@@ -22,12 +22,14 @@ wait_time = 2.0
 [node name="jingle" type="AudioStreamPlayer" parent="Title"]
 stream = ExtResource("5_u2mu7")
 volume_db = -9.127
+mix_target = 2
 script = ExtResource("4_bda36")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Title"]
 stream = ExtResource("4_8427g")
 volume_db = -9.127
 autoplay = true
+mix_target = 2
 script = ExtResource("3_d0vhl")
 
 [node name="Progress" type="RichTextLabel" parent="Title"]

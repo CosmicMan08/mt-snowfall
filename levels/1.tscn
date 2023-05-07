@@ -24,6 +24,7 @@ position = Vector2(0, -256)
 stream = ExtResource("1_6gmg0")
 volume_db = -9.127
 autoplay = true
+mix_target = 2
 script = ExtResource("2_lb0g1")
 
 [node name="TileMap" type="TileMap" parent="."]

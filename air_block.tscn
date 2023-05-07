@@ -139,8 +139,10 @@ shape = SubResource("RectangleShape2D_n474p")
 
 [node name="fwoosh" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_yno4j")
+mix_target = 2
 script = ExtResource("5_65a5s")
 
 [node name="skrt" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_ol114")
+mix_target = 2
 script = ExtResource("5_65a5s")

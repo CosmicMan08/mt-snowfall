@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bmoawpevvl7yv"]
+[gd_scene load_steps=10 format=3 uid="uid://bmoawpevvl7yv"]
 
 [ext_resource type="Texture2D" uid="uid://75mn15xgdtqc" path="res://snowball.png" id="1_k5iei"]
 [ext_resource type="Script" path="res://snowball.gd" id="1_pnavn"]
 [ext_resource type="AudioStream" uid="uid://c6328kaj5vll" path="res://fwoosh.wav" id="3_uch78"]
+[ext_resource type="Script" path="res://copy_anim.gd" id="3_xr5k6"]
 [ext_resource type="Script" path="res://Sound.gd" id="4_xnmgn"]
 
 [sub_resource type="Animation" id="Animation_ydvuc"]
@@ -82,6 +83,17 @@ libraries = {
 [node name="Snowball" type="Sprite2D" parent="."]
 texture = ExtResource("1_k5iei")
 hframes = 5
+script = ExtResource("3_xr5k6")
+
+[node name="1" type="Sprite2D" parent="Snowball"]
+position = Vector2(-256, 0)
+texture = ExtResource("1_k5iei")
+hframes = 5
+
+[node name="2" type="Sprite2D" parent="Snowball"]
+position = Vector2(256, 0)
+texture = ExtResource("1_k5iei")
+hframes = 5
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -90,6 +102,7 @@ shape = SubResource("RectangleShape2D_cwc3m")
 
 [node name="fwoosh" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_uch78")
+mix_target = 2
 script = ExtResource("4_xnmgn")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
