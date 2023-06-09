@@ -1,13 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://c1fyykoysw42g"]
+[gd_scene load_steps=10 format=3 uid="uid://cj6e6kxgyvrkg"]
 
-[ext_resource type="AudioStream" uid="uid://blcbsn1f08omq" path="res://climb.wav" id="1_e8xtc"]
-[ext_resource type="Script" path="res://Music.gd" id="2_fdsxe"]
+[ext_resource type="AudioStream" uid="uid://blcbsn1f08omq" path="res://sounds/climb.wav" id="1_08cfh"]
+[ext_resource type="Script" path="res://scripts/Music.gd" id="2_crnrk"]
 [ext_resource type="TileSet" uid="uid://wafvvxlnolxn" path="res://tileset.tres" id="3_vd8tp"]
-[ext_resource type="PackedScene" uid="uid://mky1a1kvcyja" path="res://fella.tscn" id="5_5pdr2"]
+[ext_resource type="PackedScene" uid="uid://k5ddqm0dvbs5" path="res://objects/fella.tscn" id="5_5pdr2"]
 [ext_resource type="FontFile" uid="uid://bydnw86rjds40" path="res://emulogic.ttf" id="5_om7ru"]
-[ext_resource type="PackedScene" uid="uid://dw8gcymkd4aax" path="res://wind_controller.tscn" id="6_q5ou1"]
-[ext_resource type="Texture2D" uid="uid://bv4add4vqmisy" path="res://mountain bg.png" id="7_7jnc4"]
-[ext_resource type="Script" path="res://Timer.gd" id="8_7fgrj"]
+[ext_resource type="PackedScene" path="res://objects/wind_controller.tscn" id="6_q5ou1"]
+[ext_resource type="Texture2D" uid="uid://bv4add4vqmisy" path="res://graphics/mountain bg.png" id="6_rtgpd"]
+[ext_resource type="PackedScene" path="res://game UI.tscn" id="7_0mhqh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jnmqq"]
 size = Vector2(256, 8)
@@ -16,10 +16,10 @@ size = Vector2(256, 8)
 position = Vector2(0, -256)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("1_e8xtc")
+stream = ExtResource("1_08cfh")
 volume_db = -9.127
 autoplay = true
-script = ExtResource("2_fdsxe")
+script = ExtResource("2_crnrk")
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(0, 320)
@@ -57,24 +57,9 @@ follow_viewport_enabled = true
 offset_top = 1.0
 offset_right = 256.0
 offset_bottom = 257.0
-texture = ExtResource("7_7jnc4")
+texture = ExtResource("6_rtgpd")
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="CanvasLayer"]
-layer = 0
-
-[node name="Timer" type="RichTextLabel" parent="CanvasLayer/ParallaxBackground"]
-z_index = 14
-z_as_relative = false
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 256.0
-offset_bottom = 52.0
-scale = Vector2(0.5, 0.5)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 8
-theme_override_fonts/normal_font = ExtResource("5_om7ru")
-text = "00:00:00"
-script = ExtResource("8_7fgrj")
+[node name="ui" parent="CanvasLayer" instance=ExtResource("7_0mhqh")]
 
 [node name="Wind Controller" parent="." instance=ExtResource("6_q5ou1")]
 position = Vector2(88, 120)

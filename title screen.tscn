@@ -1,36 +1,36 @@
-[gd_scene load_steps=9 format=3 uid="uid://mfn0ll8yhj8u"]
+[gd_scene load_steps=9 format=3 uid="uid://dw2soknb0oku0"]
 
-[ext_resource type="Texture2D" uid="uid://bvj1ldg5v1ean" path="res://title.png" id="1_v8kjq"]
-[ext_resource type="Script" path="res://Title.gd" id="2_e8bri"]
-[ext_resource type="Script" path="res://Music.gd" id="3_d0vhl"]
+[ext_resource type="Texture2D" uid="uid://bvj1ldg5v1ean" path="res://graphics/title.png" id="1_8yi18"]
+[ext_resource type="Script" path="res://scripts/Title.gd" id="2_5wq5l"]
+[ext_resource type="AudioStream" uid="uid://dsct2qnix5qqt" path="res://sounds/begin.wav" id="3_0tiyn"]
 [ext_resource type="FontFile" uid="uid://bydnw86rjds40" path="res://emulogic.ttf" id="3_y2odi"]
-[ext_resource type="AudioStream" uid="uid://dj1gyier1t0ub" path="res://title screen.wav" id="4_8427g"]
-[ext_resource type="Script" path="res://Sound.gd" id="4_bda36"]
-[ext_resource type="AudioStream" uid="uid://dsct2qnix5qqt" path="res://begin.wav" id="5_u2mu7"]
-[ext_resource type="Texture2D" uid="uid://dlgdh2a4kf1gp" path="res://pointer.png" id="6_im7hq"]
+[ext_resource type="Script" path="res://scripts/Sound.gd" id="4_0sr76"]
+[ext_resource type="AudioStream" uid="uid://dj1gyier1t0ub" path="res://sounds/title screen.wav" id="5_pso04"]
+[ext_resource type="Script" path="res://scripts/Music.gd" id="6_f2yqu"]
+[ext_resource type="Texture2D" uid="uid://dlgdh2a4kf1gp" path="res://graphics/pointer.png" id="8_pabpt"]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Title" type="Sprite2D" parent="."]
 position = Vector2(128, 120)
-texture = ExtResource("1_v8kjq")
-script = ExtResource("2_e8bri")
+texture = ExtResource("1_8yi18")
+script = ExtResource("2_5wq5l")
 
 [node name="Timer" type="Timer" parent="Title"]
 wait_time = 2.0
 
 [node name="jingle" type="AudioStreamPlayer" parent="Title"]
-stream = ExtResource("5_u2mu7")
+stream = ExtResource("3_0tiyn")
 volume_db = -9.127
 mix_target = 2
-script = ExtResource("4_bda36")
+script = ExtResource("4_0sr76")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Title"]
-stream = ExtResource("4_8427g")
+stream = ExtResource("5_pso04")
 volume_db = -9.127
 autoplay = true
 mix_target = 2
-script = ExtResource("3_d0vhl")
+script = ExtResource("6_f2yqu")
 
 [node name="Progress" type="RichTextLabel" parent="Title"]
 offset_left = -65.0
@@ -84,26 +84,15 @@ text = "00:00:00"
 
 [node name="Pointer" type="Sprite2D" parent="Title"]
 position = Vector2(-80, 24)
-texture = ExtResource("6_im7hq")
+texture = ExtResource("8_pabpt")
 offset = Vector2(4, 4)
 
-[node name="Avalanche" type="RichTextLabel" parent="Title"]
+[node name="FPS" type="RichTextLabel" parent="Title"]
 visible = false
 offset_left = -65.0
 offset_top = 22.0
 offset_right = 193.0
 offset_bottom = 42.0
-scale = Vector2(0.5, 0.5)
-theme_override_colors/default_color = Color(0.968627, 0.968627, 0.988235, 1)
-theme_override_fonts/normal_font = ExtResource("3_y2odi")
-text = "AVALANCHE"
-
-[node name="FPS" type="RichTextLabel" parent="Title"]
-visible = false
-offset_left = -65.0
-offset_top = 30.0
-offset_right = 193.0
-offset_bottom = 50.0
 scale = Vector2(0.5, 0.5)
 theme_override_colors/default_color = Color(0.647059, 0.878431, 0.988235, 1)
 theme_override_fonts/normal_font = ExtResource("3_y2odi")
@@ -112,9 +101,9 @@ text = "FPS counter"
 [node name="Limit" type="RichTextLabel" parent="Title"]
 visible = false
 offset_left = -65.0
-offset_top = 38.0
+offset_top = 30.0
 offset_right = 193.0
-offset_bottom = 58.0
+offset_bottom = 50.0
 scale = Vector2(0.5, 0.5)
 theme_override_colors/default_color = Color(0.968627, 0.968627, 0.988235, 1)
 theme_override_fonts/normal_font = ExtResource("3_y2odi")
@@ -123,9 +112,9 @@ text = "FPS LIMIT"
 [node name="Music" type="RichTextLabel" parent="Title"]
 visible = false
 offset_left = -65.0
-offset_top = 46.0
+offset_top = 38.0
 offset_right = 193.0
-offset_bottom = 66.0
+offset_bottom = 58.0
 scale = Vector2(0.5, 0.5)
 theme_override_colors/default_color = Color(0.647059, 0.878431, 0.988235, 1)
 theme_override_fonts/normal_font = ExtResource("3_y2odi")
@@ -134,9 +123,9 @@ text = "MUSIC VOLUME"
 [node name="Sound" type="RichTextLabel" parent="Title"]
 visible = false
 offset_left = -65.0
-offset_top = 54.0
+offset_top = 46.0
 offset_right = 193.0
-offset_bottom = 74.0
+offset_bottom = 66.0
 scale = Vector2(0.5, 0.5)
 theme_override_colors/default_color = Color(0.968627, 0.968627, 0.988235, 1)
 theme_override_fonts/normal_font = ExtResource("3_y2odi")
@@ -145,31 +134,20 @@ text = "SOUND VOLUME"
 [node name="Snow" type="RichTextLabel" parent="Title"]
 visible = false
 offset_left = -65.0
-offset_top = 62.0
+offset_top = 54.0
 offset_right = 193.0
-offset_bottom = 82.0
+offset_bottom = 74.0
 scale = Vector2(0.5, 0.5)
 theme_override_colors/default_color = Color(0.647059, 0.878431, 0.988235, 1)
 theme_override_fonts/normal_font = ExtResource("3_y2odi")
 text = "SNOWING"
 
-[node name="Avalanche_Value" type="RichTextLabel" parent="Title"]
+[node name="FPS_Value" type="RichTextLabel" parent="Title"]
 visible = false
 offset_left = 39.0
 offset_top = 22.0
 offset_right = 297.0
 offset_bottom = 42.0
-scale = Vector2(0.5, 0.5)
-theme_override_colors/default_color = Color(0.968627, 0.968627, 0.988235, 1)
-theme_override_fonts/normal_font = ExtResource("3_y2odi")
-text = "OFF"
-
-[node name="FPS_Value" type="RichTextLabel" parent="Title"]
-visible = false
-offset_left = 39.0
-offset_top = 30.0
-offset_right = 297.0
-offset_bottom = 50.0
 scale = Vector2(0.5, 0.5)
 theme_override_colors/default_color = Color(0.647059, 0.878431, 0.988235, 1)
 theme_override_fonts/normal_font = ExtResource("3_y2odi")
@@ -178,9 +156,9 @@ text = "OFF"
 [node name="Limit_Value" type="RichTextLabel" parent="Title"]
 visible = false
 offset_left = 39.0
-offset_top = 38.0
+offset_top = 30.0
 offset_right = 297.0
-offset_bottom = 58.0
+offset_bottom = 50.0
 scale = Vector2(0.5, 0.5)
 theme_override_colors/default_color = Color(0.968627, 0.968627, 0.988235, 1)
 theme_override_fonts/normal_font = ExtResource("3_y2odi")
@@ -189,9 +167,9 @@ text = "60"
 [node name="Music_Value" type="RichTextLabel" parent="Title"]
 visible = false
 offset_left = 39.0
-offset_top = 46.0
+offset_top = 38.0
 offset_right = 297.0
-offset_bottom = 66.0
+offset_bottom = 58.0
 scale = Vector2(0.5, 0.5)
 theme_override_colors/default_color = Color(0.647059, 0.878431, 0.988235, 1)
 theme_override_fonts/normal_font = ExtResource("3_y2odi")
@@ -200,9 +178,9 @@ text = "100"
 [node name="Sound_Value" type="RichTextLabel" parent="Title"]
 visible = false
 offset_left = 39.0
-offset_top = 54.0
+offset_top = 46.0
 offset_right = 297.0
-offset_bottom = 74.0
+offset_bottom = 66.0
 scale = Vector2(0.5, 0.5)
 theme_override_colors/default_color = Color(0.968627, 0.968627, 0.988235, 1)
 theme_override_fonts/normal_font = ExtResource("3_y2odi")
@@ -211,9 +189,9 @@ text = "100"
 [node name="Snow_Value" type="RichTextLabel" parent="Title"]
 visible = false
 offset_left = 39.0
-offset_top = 62.0
+offset_top = 54.0
 offset_right = 297.0
-offset_bottom = 82.0
+offset_bottom = 74.0
 scale = Vector2(0.5, 0.5)
 theme_override_colors/default_color = Color(0.647059, 0.878431, 0.988235, 1)
 theme_override_fonts/normal_font = ExtResource("3_y2odi")
@@ -222,9 +200,9 @@ text = "OFF"
 [node name="Levels" type="RichTextLabel" parent="Title"]
 visible = false
 offset_left = -49.0
-offset_top = 70.0
+offset_top = 62.0
 offset_right = 161.0
-offset_bottom = 90.0
+offset_bottom = 82.0
 scale = Vector2(0.5, 0.5)
 theme_override_colors/default_color = Color(0.968627, 0.968627, 0.988235, 1)
 theme_override_fonts/normal_font = ExtResource("3_y2odi")
@@ -233,13 +211,24 @@ text = "CUSTOM LEVELS"
 [node name="Editor" type="RichTextLabel" parent="Title"]
 visible = false
 offset_left = -49.0
-offset_top = 78.0
+offset_top = 70.0
 offset_right = 145.0
-offset_bottom = 98.0
+offset_bottom = 90.0
 scale = Vector2(0.5, 0.5)
 theme_override_colors/default_color = Color(0.647059, 0.878431, 0.988235, 1)
 theme_override_fonts/normal_font = ExtResource("3_y2odi")
 text = "LEVEL EDITOR"
+
+[node name="Gallery" type="RichTextLabel" parent="Title"]
+visible = false
+offset_left = -25.0
+offset_top = 78.0
+offset_right = 89.0
+offset_bottom = 98.0
+scale = Vector2(0.5, 0.5)
+theme_override_colors/default_color = Color(0.968627, 0.968627, 0.988235, 1)
+theme_override_fonts/normal_font = ExtResource("3_y2odi")
+text = "GALLERY"
 
 [node name="Back" type="RichTextLabel" parent="Title"]
 visible = false
@@ -248,7 +237,7 @@ offset_top = 86.0
 offset_right = 89.0
 offset_bottom = 106.0
 scale = Vector2(0.5, 0.5)
-theme_override_colors/default_color = Color(0.972549, 0.972549, 0.988235, 1)
+theme_override_colors/default_color = Color(0.647059, 0.878431, 0.988235, 1)
 theme_override_fonts/normal_font = ExtResource("3_y2odi")
 text = "GO BACK"
 

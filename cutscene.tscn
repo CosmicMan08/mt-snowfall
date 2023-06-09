@@ -1,23 +1,23 @@
 [gd_scene load_steps=3 format=3 uid="uid://cg0wa1axhpljp"]
 
-[ext_resource type="Texture2D" uid="uid://irvamt1pee4m" path="res://fella.png" id="1_goblh"]
-[ext_resource type="Script" path="res://copy_anim.gd" id="2_6mje3"]
+[ext_resource type="Texture2D" uid="uid://irvamt1pee4m" path="res://graphics/fella.png" id="1_swltr"]
+[ext_resource type="Script" path="res://scripts/copy_anim.gd" id="2_f10d5"]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Body" type="Sprite2D" parent="."]
-texture = ExtResource("1_goblh")
+texture = ExtResource("1_swltr")
 hframes = 25
 frame = 8
-script = ExtResource("2_6mje3")
+script = ExtResource("2_f10d5")
 
 [node name="Tail" type="Sprite2D" parent="Body"]
 z_index = -1
 z_as_relative = false
-texture = ExtResource("1_goblh")
+texture = ExtResource("1_swltr")
 hframes = 25
 frame = 1
-script = ExtResource("2_6mje3")
+script = ExtResource("2_f10d5")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 

@@ -1,9 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bi6xkh0rts0hp"]
+[gd_scene load_steps=9 format=3]
 
-[ext_resource type="Texture2D" uid="uid://dybpu6ruveoqx" path="res://test stage.png" id="1_jslwk"]
-[ext_resource type="Script" path="res://Music.gd" id="2_3j2ps"]
-[ext_resource type="AudioStream" uid="uid://blcbsn1f08omq" path="res://climb.wav" id="2_47j65"]
-[ext_resource type="PackedScene" uid="uid://mky1a1kvcyja" path="res://fella.tscn" id="2_schnf"]
+[ext_resource type="Texture2D" uid="uid://dybpu6ruveoqx" path="res://graphics/test stage.png" id="1_jslwk"]
+[ext_resource type="Script" path="res://scripts/Music.gd" id="2_3j2ps"]
+[ext_resource type="AudioStream" uid="uid://blcbsn1f08omq" path="res://sounds/climb.wav" id="2_47j65"]
+[ext_resource type="PackedScene" uid="uid://k5ddqm0dvbs5" path="res://objects/fella.tscn" id="2_schnf"]
 [ext_resource type="TileSet" uid="uid://wafvvxlnolxn" path="res://tileset.tres" id="3_diun5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hhu8j"]

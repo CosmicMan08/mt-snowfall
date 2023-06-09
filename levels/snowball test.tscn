@@ -1,13 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://8irpo508lkmi"]
+[gd_scene load_steps=9 format=3]
 
-[ext_resource type="AudioStream" uid="uid://blcbsn1f08omq" path="res://climb.wav" id="1_b5cf5"]
-[ext_resource type="Script" path="res://Music.gd" id="2_po04e"]
-[ext_resource type="AudioStream" uid="uid://cggeq8jp78aj3" path="res://beepin.wav" id="3_dkpwi"]
+[ext_resource type="AudioStream" uid="uid://blcbsn1f08omq" path="res://sounds/climb.wav" id="1_b5cf5"]
+[ext_resource type="Script" path="res://scripts/Music.gd" id="2_po04e"]
+[ext_resource type="AudioStream" uid="uid://cggeq8jp78aj3" path="res://sounds/beepin.wav" id="3_dkpwi"]
 [ext_resource type="TileSet" uid="uid://wafvvxlnolxn" path="res://tileset.tres" id="3_r0hpr"]
-[ext_resource type="PackedScene" uid="uid://mky1a1kvcyja" path="res://fella.tscn" id="4_8rdx7"]
-[ext_resource type="PackedScene" uid="uid://bmoawpevvl7yv" path="res://snowball.tscn" id="5_psw6b"]
-[ext_resource type="PackedScene" uid="uid://3l7qgsqkd4l6" path="res://icicle.tscn" id="6_u3r0o"]
-[ext_resource type="PackedScene" uid="uid://bpg8mm5fl15u1" path="res://cloud.tscn" id="7_hkdv1"]
+[ext_resource type="PackedScene" uid="uid://k5ddqm0dvbs5" path="res://objects/fella.tscn" id="4_8rdx7"]
+[ext_resource type="PackedScene" path="res://objects/snowball.tscn" id="5_psw6b"]
+[ext_resource type="PackedScene" path="res://objects/icicle.tscn" id="6_u3r0o"]
+[ext_resource type="PackedScene" path="res://objects/cloud.tscn" id="7_hkdv1"]
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(0, -256)

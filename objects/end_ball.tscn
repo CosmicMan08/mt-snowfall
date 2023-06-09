@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://scripts/end_ball.gd" id="1_alw3r"]
+[ext_resource type="Texture2D" uid="uid://b01l15g1aotej" path="res://graphics/end ball.png" id="1_fd13a"]
+
+[sub_resource type="Animation" id="Animation_ss8oa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_qk3ps"]
+resource_name = "ball_spin"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mvh56"]
+_data = {
+"RESET": SubResource("Animation_ss8oa"),
+"ball_spin": SubResource("Animation_qk3ps")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u8u0w"]
+size = Vector2(6, 6)
+
+[node name="End Ball" type="Node2D"]
+script = ExtResource("1_alw3r")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../EndBall")
+libraries = {
+"": SubResource("AnimationLibrary_mvh56")
+}
+
+[node name="EndBall" type="Sprite2D" parent="."]
+texture = ExtResource("1_fd13a")
+hframes = 6
+
+[node name="Ball Area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball Area"]
+shape = SubResource("RectangleShape2D_u8u0w")

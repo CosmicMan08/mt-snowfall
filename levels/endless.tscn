@@ -1,9 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://corludpqnqwyf"]
+[gd_scene load_steps=5 format=3]
 
-[ext_resource type="AudioStream" uid="uid://blcbsn1f08omq" path="res://climb.wav" id="1_o6cao"]
-[ext_resource type="Script" path="res://Music.gd" id="2_wiio5"]
+[ext_resource type="AudioStream" uid="uid://blcbsn1f08omq" path="res://sounds/climb.wav" id="1_o6cao"]
+[ext_resource type="Script" path="res://scripts/Music.gd" id="2_wiio5"]
 [ext_resource type="TileSet" uid="uid://wafvvxlnolxn" path="res://tileset.tres" id="3_vtqvs"]
-[ext_resource type="PackedScene" uid="uid://mky1a1kvcyja" path="res://fella.tscn" id="4_h6m0d"]
+[ext_resource type="PackedScene" uid="uid://k5ddqm0dvbs5" path="res://objects/fella.tscn" id="4_h6m0d"]
 
 [node name="Node2D" type="Node2D"]
 

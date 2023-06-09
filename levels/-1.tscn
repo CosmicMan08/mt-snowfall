@@ -1,11 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://cavm73psebdq3"]
+[gd_scene load_steps=9 format=3]
 
-[ext_resource type="AudioStream" uid="uid://blcbsn1f08omq" path="res://climb.wav" id="1_10ijw"]
-[ext_resource type="Script" path="res://Music.gd" id="2_2tdjm"]
+[ext_resource type="AudioStream" uid="uid://blcbsn1f08omq" path="res://sounds/climb.wav" id="1_10ijw"]
+[ext_resource type="Script" path="res://scripts/Music.gd" id="2_2tdjm"]
 [ext_resource type="TileSet" uid="uid://wafvvxlnolxn" path="res://tileset.tres" id="3_cdu43"]
-[ext_resource type="PackedScene" uid="uid://mky1a1kvcyja" path="res://fella.tscn" id="4_71aaw"]
-[ext_resource type="PackedScene" uid="uid://dpwgaqgk0qsvs" path="res://platform.tscn" id="5_76htb"]
-[ext_resource type="PackedScene" uid="uid://dv8p03bqnkbkf" path="res://air_block.tscn" id="6_nm1jj"]
+[ext_resource type="PackedScene" uid="uid://k5ddqm0dvbs5" path="res://objects/fella.tscn" id="4_71aaw"]
+[ext_resource type="PackedScene" path="res://objects/platform.tscn" id="5_76htb"]
+[ext_resource type="PackedScene" path="res://objects/air_block.tscn" id="6_nm1jj"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_xypl7"]
 a = Vector2(0, 240)

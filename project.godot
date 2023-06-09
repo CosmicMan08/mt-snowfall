@@ -17,8 +17,8 @@ config/name_localized={
 run/main_scene="res://title screen.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 boot_splash/bg_color=Color(0, 0, 0.0196078, 1)
-boot_splash/image="res://icon.png"
-config/icon="res://icon.png"
+boot_splash/image="res://graphics/icon.png"
+config/icon="res://graphics/icon.png"
 
 [display]
 
@@ -82,5 +82,5 @@ reset={
 
 [rendering]
 
-environment/defaults/default_clear_color=Color(0, 0, 0.0196078, 1)
 textures/canvas_textures/default_texture_filter=0
+environment/defaults/default_clear_color=Color(0, 0, 0.0196078, 1)
