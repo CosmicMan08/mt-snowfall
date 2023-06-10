@@ -1,10 +1,10 @@
-[gd_scene load_steps=10 format=3]
+[gd_scene load_steps=11 format=3 uid="uid://bvh1u6bs0kwwg"]
 
-[ext_resource type="Texture2D" uid="uid://75mn15xgdtqc" path="res://graphics/snowball.png" id="1_k5iei"]
-[ext_resource type="Script" path="res://scripts/snowball.gd" id="1_pnavn"]
-[ext_resource type="AudioStream" uid="uid://c6328kaj5vll" path="res://sounds/fwoosh.wav" id="3_uch78"]
-[ext_resource type="Script" path="res://scripts/copy_anim.gd" id="3_xr5k6"]
-[ext_resource type="Script" path="res://scripts/Sound.gd" id="4_xnmgn"]
+[ext_resource type="Script" path="res://scripts/snowball.gd" id="1_rvc2d"]
+[ext_resource type="Texture2D" uid="uid://75mn15xgdtqc" path="res://graphics/snowball.png" id="2_3t6ym"]
+[ext_resource type="Script" path="res://scripts/copy_anim.gd" id="3_an3yl"]
+[ext_resource type="AudioStream" uid="uid://c6328kaj5vll" path="res://sounds/fwoosh.wav" id="4_eb6ov"]
+[ext_resource type="Script" path="res://scripts/Sound.gd" id="5_iurn2"]
 
 [sub_resource type="Animation" id="Animation_ydvuc"]
 length = 0.001
@@ -62,17 +62,47 @@ tracks/1/keys = {
 "values": [0, 1, 2, 3, 4]
 }
 
+[sub_resource type="Animation" id="Animation_5iove"]
+resource_name = "snowball_repoof"
+length = 0.466673
+step = 0.0666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0667, 0.1334, 0.2001, 0.2668),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [4, 3, 2, 1, 0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_r12ti"]
 _data = {
 "RESET": SubResource("Animation_ydvuc"),
-"snowball_poof": SubResource("Animation_1d7p5")
+"snowball_poof": SubResource("Animation_1d7p5"),
+"snowball_repoof": SubResource("Animation_5iove")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cwc3m"]
 size = Vector2(6, 6)
 
 [node name="Snowball" type="Node2D"]
-script = ExtResource("1_pnavn")
+script = ExtResource("1_rvc2d")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Snowball")
@@ -81,18 +111,18 @@ libraries = {
 }
 
 [node name="Snowball" type="Sprite2D" parent="."]
-texture = ExtResource("1_k5iei")
+texture = ExtResource("2_3t6ym")
 hframes = 5
-script = ExtResource("3_xr5k6")
+script = ExtResource("3_an3yl")
 
 [node name="1" type="Sprite2D" parent="Snowball"]
 position = Vector2(-256, 0)
-texture = ExtResource("1_k5iei")
+texture = ExtResource("2_3t6ym")
 hframes = 5
 
 [node name="2" type="Sprite2D" parent="Snowball"]
 position = Vector2(256, 0)
-texture = ExtResource("1_k5iei")
+texture = ExtResource("2_3t6ym")
 hframes = 5
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -101,8 +131,8 @@ hframes = 5
 shape = SubResource("RectangleShape2D_cwc3m")
 
 [node name="fwoosh" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_uch78")
+stream = ExtResource("4_eb6ov")
 mix_target = 2
-script = ExtResource("4_xnmgn")
+script = ExtResource("5_iurn2")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

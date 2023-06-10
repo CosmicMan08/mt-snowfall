@@ -1,16 +1,16 @@
 extends Node2D
 
 @onready var objects = {
-	-1: preload("res://png of jack black.tscn"),
-	0: preload("res://fella.tscn"),
-	1: preload("res://snowball.tscn"),
-	2: preload("res://air_block.tscn"),
-	3: preload("res://platform.tscn"),
-	4: preload("res://end_ball.tscn"),
-	5: preload("res://wind_controller.tscn"),
-	6: preload("res://icicle.tscn"),
-	7: preload("res://cloud.tscn"),
-	8: preload("res://cloud.tscn")
+	-1: preload("res://objects/png of jack black.tscn"),
+	0: preload("res://objects/fella.tscn"),
+	1: preload("res://objects/snowball.tscn"),
+	2: preload("res://objects/air_block.tscn"),
+	3: preload("res://objects/platform.tscn"),
+	4: preload("res://objects/end_ball.tscn"),
+	5: preload("res://objects/wind_controller.tscn"),
+	6: preload("res://objects/icicle.tscn"),
+	7: preload("res://objects/cloud.tscn"),
+	8: preload("res://objects/cloud.tscn")
 }
 
 # Called when the node enters the scene tree for the first time.

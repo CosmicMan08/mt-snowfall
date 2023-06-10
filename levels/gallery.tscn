@@ -1,9 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://b0rugoo87g3ps"]
+[gd_scene load_steps=23 format=3 uid="uid://kojeeji43aud"]
 
+[ext_resource type="Texture2D" uid="uid://coomsruw51yye" path="res://gallery/un aliased.png" id="1_k807y"]
 [ext_resource type="AudioStream" uid="uid://cgw4eww1rrfcf" path="res://sounds/gallery.wav" id="2_sfn2i"]
 [ext_resource type="Script" path="res://scripts/Music.gd" id="3_eksxt"]
-[ext_resource type="TileSet" uid="uid://wafvvxlnolxn" path="res://tileset.tres" id="3_m1vbu"]
-[ext_resource type="PackedScene" uid="uid://k5ddqm0dvbs5" path="res://objects/fella.tscn" id="4_b2e1j"]
+[ext_resource type="TileSet" uid="uid://b5tcw3p3ixwg6" path="res://tileset.tres" id="3_m1vbu"]
+[ext_resource type="PackedScene" uid="uid://cb82ameh2l7nw" path="res://objects/fella.tscn" id="4_b2e1j"]
 [ext_resource type="Texture2D" uid="uid://b50xu81j3x7do" path="res://gallery/silly sprites.png" id="5_8r1yl"]
 [ext_resource type="Texture2D" uid="uid://75mn15xgdtqc" path="res://graphics/snowball.png" id="5_vwh83"]
 [ext_resource type="Texture2D" uid="uid://b01l15g1aotej" path="res://graphics/end ball.png" id="6_s4bc4"]
@@ -17,12 +18,29 @@
 [ext_resource type="Texture2D" uid="uid://dfj8tl6u410qw" path="res://graphics/icicle.png" id="15_6p3x1"]
 [ext_resource type="Texture2D" uid="uid://be3x5klt7o1fs" path="res://graphics/weird circle.png" id="16_0hqxm"]
 [ext_resource type="Texture2D" uid="uid://6xxjdbpxyqy1" path="res://graphics/png of jack black.jpg" id="17_n0rlr"]
+[ext_resource type="Texture2D" uid="uid://cjrceo2fllqv" path="res://gallery/kat.png" id="18_k7nqg"]
+[ext_resource type="Texture2D" uid="uid://drp7p03vi36n1" path="res://gallery/20230323_133452.jpg" id="19_sg660"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_apd2w"]
+size = Vector2(56, 34)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b8ngi"]
+size = Vector2(16, 1224)
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(0, -256)
 
+[node name="UnAliased" type="Sprite2D" parent="."]
+position = Vector2(1056, 184)
+texture = ExtResource("1_k807y")
+
+[node name="20230323133452" type="Sprite2D" parent="."]
+position = Vector2(456, 128)
+scale = Vector2(0.140127, 0.133971)
+texture = ExtResource("19_sg660")
+
 [node name="SillySprites" type="Sprite2D" parent="."]
-position = Vector2(240, 120)
+position = Vector2(208, 120)
 texture = ExtResource("5_8r1yl")
 centered = false
 
@@ -61,19 +79,19 @@ format = 2
 layer_0/tile_data = PackedInt32Array(-2818017, 0, 0, -3145697, 0, 0, -2818018, 0, 0, -3145698, 0, 0, -2818019, 0, 0, -2883555, 0, 0, -2949091, 0, 0, -3014627, 0, 0, -3080163, 0, 0, -3145699, 0, 0, -3211235, 0, 0, -3276771, 0, 0, -3342307, 0, 0, -3407843, 0, 0, -3145701, 0, 0, -3211237, 0, 0, -3276773, 0, 0, -3342309, 0, 0, -3407846, 0, 0, -3145703, 0, 0, -3211239, 0, 0, -3276775, 0, 0, -3342311, 0, 0, -3407847, 0, 0, -3145705, 0, 0, -3211241, 0, 0, -3276777, 0, 0, -3342313, 0, 0, -3407849, 0, 0, -3211243, 0, 0, -3276779, 0, 0, -3342315, 0, 0, -3407851, 0, 0, -4325355, 0, 0, -3145708, 0, 0, -4325356, 0, 0, -3211245, 0, 0, -3276781, 0, 0, -3342317, 0, 0, -3407853, 0, 0, -4325357, 0, 0, -3145710, 0, 0, -3211247, 0, 0, -3276783, 0, 0, -3342319, 0, 0, -3407855, 0, 0, -4128752, 0, 0, -4194288, 0, 0, -3932145, 0, 0, -4063217, 0, 0, -4194289, 0, 0, -3145714, 0, 0, -3211250, 0, 0, -3276786, 0, 0, -3342322, 0, 0, -3407858, 0, 0, -4194290, 0, 0, -3145715, 0, 0, -3145716, 0, 0, -3211252, 0, 0, -3276788, 0, 0, -3342324, 0, 0, -3407860, 0, 0, -3145718, 0, 0, -3211254, 0, 0, -3276790, 0, 0, -3342326, 0, 0, -3407862, 0, 0, -3932150, 0, 0, -3145719, 0, 0, -3407863, 0, 0, -3932151, 0, 0, -3145720, 0, 0, -3211256, 0, 0, -3276792, 0, 0, -3342328, 0, 0, -3407864, 0, 0, -3932152, 0, 0, -3932153, 0, 0, -3276794, 0, 0, -3342330, 0, 0, -3407866, 0, 0, -3932154, 0, 0, -3145723, 0, 0, -3211259, 0, 0, -3276795, 0, 0, -3932155, 0, 0, -3276796, 0, 0, -3342332, 0, 0, -3407868, 0, 0, -3670014, 0, 0, -3670015, 0, 0, -3670016, 0, 0, -4587497, 0, 0, -4587496, 0, 0, -4587495, 0, 0, -4587494, 0, 0, -4587493, 0, 0, -4587492, 0, 0, -4587491, 0, 0, -4587490, 0, 0, -4587489, 0, 0, -4849639, 0, 0, -4784102, 0, 0, -4849637, 0, 0, -4784100, 0, 0, -4849635, 0, 0, -4980710, 0, 0, -4980708, 0, 0, -4980732, 0, 0, -4980733, 0, 0, -4980734, 0, 0, -4980735, 0, 0, -4980736, 0, 0, -5046267, 0, 0, -5111803, 0, 0, -5111802, 0, 0, -5177338, 0, 0, -5242873, 0, 0, -5308409, 0, 0, -5308408, 0, 0, -5373944, 0, 0, -5439479, 0, 0, -5439478, 0, 0, -5505014, 0, 0, -5570549, 0, 0, -5636084, 0, 0, -5636083, 0, 0, -5701619, 0, 0, -5701618, 0, 0, -5701617, 0, 0, -5767153, 0, 0, -5767152, 0, 0, -5767151, 0, 0, -5832687, 0, 0, -5832686, 0, 0, -5832685, 0, 0, -5898220, 0, 0, -5898219, 0, 0, -5963755, 0, 0, -5963754, 0, 0, -5963753, 0, 0, -5963752, 0, 0, -6029288, 0, 0, -6029287, 0, 0, -6029286, 0, 0, -6094821, 0, 0, -6094820, 0, 0, -6094819, 0, 0, -6160355, 0, 0, -6160354, 0, 0, -6160353, 0, 0, -6225920, 0, 0, -6291456, 0, 0, -6291455, 0, 0, -6356991, 0, 0, -6356990, 0, 0, -6422526, 0, 0, -6422525, 0, 0, -6488060, 0, 0, -6553595, 0, 0, -6553594, 0, 0, -6619130, 0, 0, -6619129, 0, 0, -6684664, 0, 0, -6750199, 0, 0, -6750198, 0, 0, -6815733, 0, 0, -6815732, 0, 0, -6881267, 0, 0, -6881266, 0, 0, -6946801, 0, 0, -6946800, 0, 0, -7012336, 0, 0, -7012335, 0, 0, -7012334, 0, 0, -7077869, 0, 0, -7077868, 0, 0, -7077867, 0, 0, -7077866, 0, 0, -7143401, 0, 0, -7143400, 0, 0, -7143399, 0, 0, -7143398, 0, 0, -7143397, 0, 0, -7143396, 0, 0, -7143395, 0, 0, -7143394, 0, 0, -7143393, 0, 0)
 
 [node name="Snowball" type="Sprite2D" parent="."]
-position = Vector2(448, 192)
+position = Vector2(896, 210)
 texture = ExtResource("5_vwh83")
 
 [node name="EndBall" type="Sprite2D" parent="."]
-position = Vector2(448, 176)
+position = Vector2(896, 200)
 texture = ExtResource("6_s4bc4")
 
 [node name="AirBlock" type="Sprite2D" parent="."]
-position = Vector2(440, 208)
+position = Vector2(896, 228)
 texture = ExtResource("7_pvqxt")
 
 [node name="Pointer" type="Sprite2D" parent="."]
-position = Vector2(432, 152)
+position = Vector2(872, 176)
 texture = ExtResource("8_4cl7s")
 
 [node name="TestStage" type="Sprite2D" parent="."]
@@ -86,7 +104,7 @@ texture = ExtResource("10_utne2")
 centered = false
 
 [node name="Pt" type="Sprite2D" parent="."]
-position = Vector2(184, 168)
+position = Vector2(154, 168)
 texture = ExtResource("13_vakq1")
 
 [node name="3d" type="Sprite2D" parent="."]
@@ -94,24 +112,41 @@ position = Vector2(48, 192)
 scale = Vector2(0.193939, 0.205567)
 texture = ExtResource("13_jn4gw")
 
-[node name="fella" parent="." groups=["wrapless"] instance=ExtResource("4_b2e1j")]
-position = Vector2(112, 224)
-
 [node name="Clouds" type="Sprite2D" parent="."]
-position = Vector2(456, 136)
+position = Vector2(928, 176)
 texture = ExtResource("14_53ome")
 
 [node name="Icicle" type="Sprite2D" parent="."]
-position = Vector2(448, 120)
+position = Vector2(896, 192)
 texture = ExtResource("15_6p3x1")
 
 [node name="WeirdCircle" type="Sprite2D" parent="."]
-position = Vector2(488, 104)
+position = Vector2(944, 216)
 texture = ExtResource("16_0hqxm")
 
 [node name="PngOfJackBlack" type="Sprite2D" parent="."]
-position = Vector2(384, 72)
+position = Vector2(336, 96)
 scale = Vector2(0.0414634, 0.0577889)
 texture = ExtResource("17_n0rlr")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(828, 223)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_apd2w")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(-8, 240)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(0, -596)
+shape = SubResource("RectangleShape2D_b8ngi")
+
+[node name="Kat" type="Sprite2D" parent="."]
+position = Vector2(828, 223)
+texture = ExtResource("18_k7nqg")
+
+[node name="fella" parent="." groups=["wrapless"] instance=ExtResource("4_b2e1j")]
+position = Vector2(112, 224)
 
 [connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="_on_finished"]

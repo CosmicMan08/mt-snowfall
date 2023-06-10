@@ -1,7 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://bpr482qqv2lj1"]
+[gd_scene load_steps=9 format=3 uid="uid://d1pbc51rh0gfe"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_ede3k"]
-[ext_resource type="TileSet" path="res://tileset.tres" id="2_x0nm1"]
+[ext_resource type="TileSet" uid="uid://b5tcw3p3ixwg6" path="res://tileset.tres" id="2_x0nm1"]
 [ext_resource type="Texture2D" uid="uid://bv4add4vqmisy" path="res://graphics/mountain bg.png" id="3_jusl2"]
 [ext_resource type="FontFile" uid="uid://bydnw86rjds40" path="res://emulogic.ttf" id="5_pw2hj"]
 [ext_resource type="Script" path="res://scripts/Timer.gd" id="5_s6w3m"]

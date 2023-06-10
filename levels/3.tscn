@@ -1,9 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://cj6e6kxgyvrkg"]
+[gd_scene load_steps=10 format=3 uid="uid://cccgyym8sw6dx"]
 
 [ext_resource type="AudioStream" uid="uid://blcbsn1f08omq" path="res://sounds/climb.wav" id="1_08cfh"]
 [ext_resource type="Script" path="res://scripts/Music.gd" id="2_crnrk"]
-[ext_resource type="TileSet" uid="uid://wafvvxlnolxn" path="res://tileset.tres" id="3_vd8tp"]
-[ext_resource type="PackedScene" uid="uid://k5ddqm0dvbs5" path="res://objects/fella.tscn" id="5_5pdr2"]
+[ext_resource type="TileSet" uid="uid://b5tcw3p3ixwg6" path="res://tileset.tres" id="3_vd8tp"]
+[ext_resource type="PackedScene" uid="uid://cb82ameh2l7nw" path="res://objects/fella.tscn" id="5_5pdr2"]
 [ext_resource type="FontFile" uid="uid://bydnw86rjds40" path="res://emulogic.ttf" id="5_om7ru"]
 [ext_resource type="PackedScene" path="res://objects/wind_controller.tscn" id="6_q5ou1"]
 [ext_resource type="Texture2D" uid="uid://bv4add4vqmisy" path="res://graphics/mountain bg.png" id="6_rtgpd"]
