@@ -11,7 +11,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	print(wind_timer)
+	#print(wind_timer)
 	wind_timer += delta
 	
 	

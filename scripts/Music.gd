@@ -15,4 +15,7 @@ func _process(_delta):
 
 
 func _on_finished():
-	playing = true
+	if name != "cutscene": playing = true
+	elif name == "cutscene":
+		var id = get_tree().get_current_scene().scene_file_path.replace("res://cutscenes/","").replace(".tscn","")
+		get_tree().change_scene_to_file("res://levels/"+str(int(id)+1)+".tscn")

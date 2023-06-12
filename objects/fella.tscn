@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cb82ameh2l7nw"]
+[gd_scene load_steps=26 format=3 uid="uid://cb82ameh2l7nw"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_ivkka"]
 [ext_resource type="Texture2D" uid="uid://irvamt1pee4m" path="res://graphics/fella.png" id="2_6knxx"]
@@ -272,39 +272,6 @@ tracks/0/keys = {
 "values": [5, 6, 7]
 }
 
-[sub_resource type="Animation" id="Animation_rr5gt"]
-resource_name = "tail_wag"
-length = 0.8
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Tail:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3]
-}
-
-[sub_resource type="Animation" id="Animation_8xfmj"]
-resource_name = "turn_around"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Body:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [15]
-}
-
 [sub_resource type="Animation" id="Animation_c1wbk"]
 resource_name = "fox_yawn"
 length = 2.0
@@ -345,6 +312,68 @@ tracks/2/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_rr5gt"]
+resource_name = "tail_wag"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Tail:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_8xfmj"]
+resource_name = "turn_around"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [15]
+}
+
+[sub_resource type="Animation" id="Animation_2o2qw"]
+resource_name = "fox_teeter"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [30, 31]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Tail:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jtt86"]
 _data = {
 "RESET": SubResource("Animation_1am7b"),
@@ -357,6 +386,7 @@ _data = {
 "fox_lookup": SubResource("Animation_h12en"),
 "fox_skid": SubResource("Animation_tr3if"),
 "fox_snowballed": SubResource("Animation_x7uku"),
+"fox_teeter": SubResource("Animation_2o2qw"),
 "fox_walk": SubResource("Animation_2ebda"),
 "fox_yawn": SubResource("Animation_c1wbk"),
 "tail_wag": SubResource("Animation_rr5gt"),
@@ -365,6 +395,9 @@ _data = {
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jx32b"]
 size = Vector2(8, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sfic2"]
+size = Vector2(4, 3)
 
 [node name="fella" type="CharacterBody2D"]
 script = ExtResource("1_ivkka")
@@ -472,6 +505,18 @@ one_shot = true
 process_callback = 0
 wait_time = 0.1
 one_shot = true
+
+[node name="left check" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="left check"]
+position = Vector2(-2, 17.5)
+shape = SubResource("RectangleShape2D_sfic2")
+
+[node name="right check" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="right check"]
+position = Vector2(2, 17.5)
+shape = SubResource("RectangleShape2D_sfic2")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

@@ -15,7 +15,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var level_string = str("0,1,32,1,0,0;0,0,32,1,1,0;7,3,0;0,6,7,32;0,12,8,32;0,18,7,32;0,24,8,32;0,30,7,32")
+	var level_string = "0,1,32,1,0,0;0,0,32,1,1,0;7,3,0;0,6,7,32;0,12,8,32;0,18,7,32;0,24,8,32;0,30,7,32"
 	var object_array = Array(level_string.split(";"))
 	var level_array = Array()
 	for i in object_array.size():

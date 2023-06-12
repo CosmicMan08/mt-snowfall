@@ -17,11 +17,26 @@ var isDiving = false
 var hasFloated = false
 var wind_dir = 0
 
+func list_files_in_directory(path):
+	var files = []
+	var dir = DirAccess.open(path)
+	dir.list_dir_begin()
+
+	while true:
+		var file = dir.get_next()
+		if file == "":
+			break
+		elif not file.begins_with("."):
+			files.append(file)
+
+	dir.list_dir_end()
+
+	return files
+
 func _physics_process(delta):
-	yawn_timer -= delta
-	
 	if ($AnimationPlayer.current_animation == "fox_yawn" or 
-	$AnimationPlayer.current_animation == "fox_snowballed"):
+	$AnimationPlayer.current_animation == "fox_snowballed" or 
+	$AnimationPlayer.current_animation == "fox_teeter"):
 		$Tail.visible = false
 	else:
 		$Tail.visible = true
@@ -33,8 +48,14 @@ func _physics_process(delta):
 	
 	$"the wagger".play("tail_wag")
 	if end:
+		$AnimationPlayer.play("fox_jump")
 		velocity.y -= 5
-		if position.y < $Camera2D.limit_top - 50: get_tree().change_scene_to_file("res://levels/"+str(int(get_tree().get_current_scene().scene_file_path.replace("res://levels/","").replace(".tscn",""))+1)+".tscn")
+		if position.y < $Camera2D.limit_top - 50:
+			var level_id = get_tree().get_current_scene().scene_file_path.replace("res://levels/","").replace(".tscn","")
+			if level_id+".tscn" in list_files_in_directory("res://cutscenes"):
+				get_tree().change_scene_to_file("res://cutscenes/"+str(int(level_id))+".tscn")
+			else:
+				get_tree().change_scene_to_file("res://levels/"+str(int(level_id)+1)+".tscn")
 	else:
 		if not is_on_floor():
 			if was_on_floor and not velocity.y < 0:
@@ -116,9 +137,13 @@ func _physics_process(delta):
 				elif Input.is_action_pressed("ui_down"):
 					$Tail.offset.y = 2
 					$AnimationPlayer.play("fox_crouch")
+				elif ((get_tree().get_root().get_node("Node2D/TileMap") in $"left check".get_overlapping_bodies())
+				!= (get_tree().get_root().get_node("Node2D/TileMap") in $"right check".get_overlapping_bodies())):
+					$AnimationPlayer.play("fox_teeter")
 				else:
 					if yawn_timer > 0 and $AnimationPlayer.current_animation != "fox_yawn":
 						$AnimationPlayer.play("fox_idle")
+						yawn_timer -= delta
 					else:
 						$AnimationPlayer.play("fox_yawn")
 						yawn_timer = randf_range(2,15)
@@ -130,7 +155,7 @@ func _physics_process(delta):
 		
 		#if old_direction != direction and not old_direction and direction: # or old_direction != 0
 		#	$"Turn Around".start()
-		print(yawn_timer)
+		print(str($"left check".get_overlapping_bodies()))
 		
 		#snowball stuff
 		if hitfall_timer > 0:
@@ -184,6 +209,11 @@ func _on_area_2d_area_entered(area):
 		velocity.y = 100
 		area.get_parent().queue_free()
 
+func area_coll(arr):
+	for i in arr:
+		if i.get_class() == "TileMap":
+			return true
+	return false
 
 func _on_animation_player_animation_finished(anim_name):
 	pass

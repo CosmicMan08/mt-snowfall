@@ -25,4 +25,4 @@ func _process(delta):
 		$AnimationPlayer.current_animation = "pulsate_2"
 		$CollisionShape2D.disabled = true
 		
-	print(timer)
+	#print(timer)

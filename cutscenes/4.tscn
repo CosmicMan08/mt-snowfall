@@ -1,0 +1,386 @@
+[gd_scene load_steps=12 format=3 uid="uid://bfg2s5mrc5d82"]
+
+[ext_resource type="AudioStream" uid="uid://wv5mjg01r0x2" path="res://sounds/sleep cutscene.wav" id="1_3cybd"]
+[ext_resource type="Script" path="res://scripts/Music.gd" id="2_nkyhb"]
+[ext_resource type="Texture2D" uid="uid://irvamt1pee4m" path="res://graphics/fella.png" id="3_b1so2"]
+[ext_resource type="Script" path="res://AnimationPlayer.gd" id="4_hflce"]
+[ext_resource type="TileSet" uid="uid://b5tcw3p3ixwg6" path="res://tileset.tres" id="5_qfc4w"]
+[ext_resource type="Texture2D" uid="uid://dfj8tl6u410qw" path="res://graphics/icicle.png" id="6_ls22p"]
+[ext_resource type="FontFile" uid="uid://bydnw86rjds40" path="res://emulogic.ttf" id="7_n0u6s"]
+
+[sub_resource type="Animation" id="Animation_06tkc"]
+resource_name = "sleep"
+length = 12.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.7, 3.4, 4.1, 9.7, 12.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(240, -360), Vector2(352, -360), Vector2(352, -360), Vector2(384, -360), Vector2(384, -360), Vector2(384, -216)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 2, 2.1, 2.2, 2.3, 2.4, 2.9, 3, 3.1, 3.2, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 4.1, 4.8, 4.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [5, 6, 7, 5, 6, 7, 5, 6, 7, 5, 6, 7, 5, 6, 7, 5, 6, 4, 25, 26, 27, 28, 29, 28, 27, 26, 25, 5, 6, 7, 5, 6, 7, 4, 24, 32]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Body:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 4.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Body/Tail:flip_h")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 4.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Body/Tail:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2, 3.3, 4.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("sleep/Timer:text")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 5.1, 5.3, 5.5, 5.7, 5.9, 6.1, 6.3, 6.5, 6.7, 6.9, 7.1, 7.3, 7.5, 7.7, 7.9, 8.1, 8.3, 8.5, 8.7, 8.9, 9.1, 9.3, 9.5, 9.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["", "z", "zz", "zzz", "zzz.", "zzz..", "zzz...", "z", "zz", "zzz", "zzz.", "zzz..", "zzz...", "z", "zz", "zzz", "zzz.", "zzz..", "zzz...", "z", "zz", "zzz", "zzz.", "zzz..", "zzz..."]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("sleep:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 9.7, 12.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(256, -224), Vector2(256, -224), Vector2(256, -80)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Body:offset")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(1, 0), Vector2(0, 0), Vector2(1, 0), Vector2(0, 0), Vector2(1, 0), Vector2(0, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Body:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 10.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("sleep:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 10.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_d2yx6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(240, -360)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Body:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Body/Tail:flip_h")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Body/Tail:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("sleep/Timer:text")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["zzz..."]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("sleep:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(256, -224)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Body:offset")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Body:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("sleep:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5g7h2"]
+_data = {
+"RESET": SubResource("Animation_d2yx6"),
+"sleep": SubResource("Animation_06tkc")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jao2i"]
+size = Vector2(16, 256)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="cutscene" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_3cybd")
+volume_db = -9.127
+autoplay = true
+mix_target = 2
+script = ExtResource("2_nkyhb")
+
+[node name="Body" type="Sprite2D" parent="."]
+position = Vector2(240, -360)
+texture = ExtResource("3_b1so2")
+hframes = 10
+vframes = 4
+frame = 4
+
+[node name="Tail" type="Sprite2D" parent="Body"]
+z_index = -1
+z_as_relative = false
+texture = ExtResource("3_b1so2")
+hframes = 10
+vframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5g7h2")
+}
+script = ExtResource("4_hflce")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(384, -360)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(248, -352)
+shape = SubResource("RectangleShape2D_jao2i")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(520, -352)
+shape = SubResource("RectangleShape2D_jao2i")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(384, -232)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_jao2i")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
+position = Vector2(384, -488)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_jao2i")
+
+[node name="TileMap" type="TileMap" parent="."]
+visible = false
+position = Vector2(256, -224)
+tile_set = ExtResource("5_qfc4w")
+cell_quadrant_size = 8
+format = 2
+layer_0/tile_data = PackedInt32Array(-196608, 0, 0, -262144, 0, 0, -327680, 0, 0, -393216, 0, 0, -458752, 0, 0, -524288, 0, 0, -589824, 0, 0, -655360, 0, 0, -720896, 0, 0, -786432, 0, 0, -851968, 0, 0, -917504, 0, 0, -983040, 0, 0, -1048576, 0, 0, -1114112, 0, 0, -1179648, 0, 0, -1245184, 0, 0, -1310720, 0, 0, -1376256, 0, 0, -1441792, 0, 0, -1507328, 0, 0, -1572864, 0, 0, -1638400, 0, 0, -1703936, 0, 0, -1769472, 0, 0, -1835008, 0, 0, -1900544, 0, 0, -1966080, 0, 0, -2031616, 0, 0, -2097152, 0, 0, -2097121, 0, 0, -2097122, 0, 0, -2097123, 0, 0, -2097124, 0, 0, -2097125, 0, 0, -2097126, 0, 0, -2097127, 0, 0, -2097128, 0, 0, -2097129, 0, 0, -2097130, 0, 0, -2097131, 0, 0, -2097132, 0, 0, -2097133, 0, 0, -2097134, 0, 0, -2097135, 0, 0, -2097136, 0, 0, -2097137, 0, 0, -2097138, 0, 0, -2097139, 0, 0, -2097140, 0, 0, -2097141, 0, 0, -2097142, 0, 0, -2097143, 0, 0, -2097144, 0, 0, -2097145, 0, 0, -2097146, 0, 0, -2097147, 0, 0, -2097148, 0, 0, -2097149, 0, 0, -2097150, 0, 0, -2097151, 0, 0, -196577, 0, 0, -262113, 0, 0, -327649, 0, 0, -393185, 0, 0, -458721, 0, 0, -524257, 0, 0, -589793, 0, 0, -655329, 0, 0, -720865, 0, 0, -786401, 0, 0, -851937, 0, 0, -917473, 0, 0, -983009, 0, 0, -1048545, 0, 0, -1114081, 0, 0, -1179617, 0, 0, -1245153, 0, 0, -1310689, 0, 0, -1376225, 0, 0, -1441761, 0, 0, -1507297, 0, 0, -1572833, 0, 0, -1638369, 0, 0, -1703905, 0, 0, -1769441, 0, 0, -1834977, 0, 0, -1900513, 0, 0, -1966049, 0, 0, -2031585, 0, 0, -196578, 0, 0, -196579, 0, 0, -196580, 0, 0, -196581, 0, 0, -196582, 0, 0, -196583, 0, 0, -196584, 0, 0, -196585, 0, 0, -196586, 0, 0, -196587, 0, 0, -196588, 0, 0, -196589, 0, 0, -196590, 0, 0, -196591, 0, 0, -196592, 0, 0, -196593, 0, 0, -196594, 0, 0, -196595, 0, 0, -196596, 0, 0, -196597, 0, 0, -196598, 0, 0, -196599, 0, 0, -196600, 0, 0, -196601, 0, 0, -196602, 0, 0, -196603, 0, 0, -196604, 0, 0, -196605, 0, 0, -196606, 0, 0, -196607, 0, 0)
+
+[node name="sleep" type="TileMap" parent="."]
+position = Vector2(256, -224)
+tile_set = ExtResource("5_qfc4w")
+cell_quadrant_size = 8
+format = 2
+layer_0/tile_data = PackedInt32Array(-1048562, 131072, 1, -1048561, 196608, 1, -1048560, 196608, 1, -1048559, 262144, 1, -1310706, 0, 0, -1310705, 0, 0, -1310704, 0, 0, -1310703, 0, 0, -1310702, 0, 0, -1245165, 0, 0, -1179629, 0, 0, -1114093, 0, 0, -1048557, 0, 0, -1310701, 0, 0, -1245164, 0, 0, -1179628, 0, 0, -1114092, 0, 0, -1048556, 0, 0, -983020, 0, 0, -983031, 262144, 3, -983030, 262144, 3, -983029, 262144, 3, -983028, 262144, 3, -983027, 262144, 3, -983026, 262144, 3, -983025, 262144, 3, -983024, 262144, 3, -983023, 262144, 3, -983022, 262144, 3, -983021, 0, 0, -983019, 0, 0, -983018, 0, 0, -983017, 0, 0, -1048555, 262144, 1, -983016, 0, 0, -983015, 0, 0, -983014, 0, 0, -983013, 0, 0, -983012, 0, 0, -983032, 262144, 3, -983033, 262144, 3, -983034, 262144, 3, -983035, 262144, 3, -983036, 262144, 3, -983037, 262144, 3, -983009, 0, 0, -983010, 0, 0, -983011, 0, 0, -983038, 262144, 3, -983039, 262144, 3, -983040, 262144, 3)
+
+[node name="Icicle" type="Sprite2D" parent="sleep"]
+position = Vector2(116, -104)
+texture = ExtResource("6_ls22p")
+hframes = 6
+
+[node name="Icicle2" type="Sprite2D" parent="sleep"]
+position = Vector2(132, -104)
+texture = ExtResource("6_ls22p")
+hframes = 6
+
+[node name="Icicle3" type="Sprite2D" parent="sleep"]
+position = Vector2(4, -104)
+texture = ExtResource("6_ls22p")
+hframes = 6
+
+[node name="Icicle4" type="Sprite2D" parent="sleep"]
+position = Vector2(252, -104)
+texture = ExtResource("6_ls22p")
+hframes = 6
+
+[node name="Icicle5" type="Sprite2D" parent="sleep"]
+position = Vector2(196, -104)
+texture = ExtResource("6_ls22p")
+hframes = 6
+
+[node name="Icicle6" type="Sprite2D" parent="sleep"]
+position = Vector2(68, -104)
+texture = ExtResource("6_ls22p")
+hframes = 6
+
+[node name="Icicle7" type="Sprite2D" parent="sleep"]
+position = Vector2(44, -104)
+texture = ExtResource("6_ls22p")
+hframes = 6
+
+[node name="Timer" type="RichTextLabel" parent="sleep"]
+z_index = 14
+z_as_relative = false
+offset_left = 103.0
+offset_top = -146.0
+offset_right = 217.0
+offset_bottom = -114.0
+scale = Vector2(0.5, 0.5)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("7_n0u6s")
+text = "zzz..."
+
+[node name="TileMap3" type="TileMap" parent="."]
+visible = false
+position = Vector2(256, -224)
+tile_set = ExtResource("5_qfc4w")
+cell_quadrant_size = 8
+format = 2
+
+[connection signal="finished" from="cutscene" to="cutscene" method="_on_finished"]

@@ -1,8 +1,12 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=8 format=3 uid="uid://bqhpy0nudpew8"]
 
 [ext_resource type="FontFile" uid="uid://bydnw86rjds40" path="res://emulogic.ttf" id="1_q4gpi"]
 [ext_resource type="Script" path="res://scripts/Timer.gd" id="2_awwp5"]
 [ext_resource type="Script" path="res://levels/FPS.gd" id="3_kiutl"]
+[ext_resource type="Texture2D" uid="uid://cd0146u4em5wr" path="res://graphics/pause.png" id="4_w8g20"]
+[ext_resource type="AudioStream" uid="uid://c2o22lkmxqcl2" path="res://sounds/pause.wav" id="5_b6vm4"]
+[ext_resource type="Script" path="res://Pause.gd" id="5_y818r"]
+[ext_resource type="Script" path="res://scripts/Sound.gd" id="7_xieqp"]
 
 [node name="ui" type="ParallaxBackground"]
 layer = 0
@@ -34,3 +38,15 @@ theme_override_constants/outline_size = 8
 theme_override_fonts/normal_font = ExtResource("1_q4gpi")
 text = "60"
 script = ExtResource("3_kiutl")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+process_mode = 3
+visible = false
+offset_right = 256.0
+offset_bottom = 240.0
+texture = ExtResource("4_w8g20")
+script = ExtResource("5_y818r")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="TextureRect"]
+stream = ExtResource("5_b6vm4")
+script = ExtResource("7_xieqp")
