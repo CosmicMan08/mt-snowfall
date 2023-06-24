@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtmakikmun81j"]
+
+[ext_resource type="Texture2D" uid="uid://be3x5klt7o1fs" path="res://graphics/weird circle.png" id="1_efup2"]
+
+[node name="level object" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_efup2")
+centered = false
+hframes = 5
+vframes = 5

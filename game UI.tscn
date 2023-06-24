@@ -1,23 +1,80 @@
-[gd_scene load_steps=8 format=3 uid="uid://bqhpy0nudpew8"]
+[gd_scene load_steps=13 format=3 uid="uid://bbgywvn4sk7nd"]
 
+[ext_resource type="Script" path="res://scripts/Snow.gd" id="1_18i8o"]
 [ext_resource type="FontFile" uid="uid://bydnw86rjds40" path="res://emulogic.ttf" id="1_q4gpi"]
 [ext_resource type="Script" path="res://scripts/Timer.gd" id="2_awwp5"]
-[ext_resource type="Script" path="res://levels/FPS.gd" id="3_kiutl"]
+[ext_resource type="Texture2D" uid="uid://dvjk54pyt7a5u" path="res://graphics/snow.png" id="2_sim1k"]
 [ext_resource type="Texture2D" uid="uid://cd0146u4em5wr" path="res://graphics/pause.png" id="4_w8g20"]
+[ext_resource type="Script" path="res://scripts/FPS.gd" id="5_a44fa"]
 [ext_resource type="AudioStream" uid="uid://c2o22lkmxqcl2" path="res://sounds/pause.wav" id="5_b6vm4"]
-[ext_resource type="Script" path="res://Pause.gd" id="5_y818r"]
+[ext_resource type="Script" path="res://scripts/Pause.gd" id="7_6gt25"]
 [ext_resource type="Script" path="res://scripts/Sound.gd" id="7_xieqp"]
+
+[sub_resource type="Animation" id="Animation_o08v6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(200, 200)]
+}
+
+[sub_resource type="Animation" id="Animation_k4mk4"]
+resource_name = "snowing"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(200, 200), Vector2(200, 600)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3noqv"]
+_data = {
+"RESET": SubResource("Animation_o08v6"),
+"snowing": SubResource("Animation_k4mk4")
+}
 
 [node name="ui" type="ParallaxBackground"]
 layer = 0
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Snow")
+libraries = {
+"": SubResource("AnimationLibrary_3noqv")
+}
+script = ExtResource("1_18i8o")
+
+[node name="Snow" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(200, 200)
+texture = ExtResource("2_sim1k")
+
+[node name="Snow2" type="Sprite2D" parent="Snow"]
+visible = false
+position = Vector2(0, -400)
+texture = ExtResource("2_sim1k")
+
 [node name="Timer" type="RichTextLabel" parent="."]
 z_index = 14
 z_as_relative = false
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 256.0
-offset_bottom = 52.0
+offset_left = 7.0
+offset_top = 6.0
+offset_right = 255.0
+offset_bottom = 50.0
 scale = Vector2(0.5, 0.5)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
@@ -28,16 +85,16 @@ script = ExtResource("2_awwp5")
 [node name="FPS" type="RichTextLabel" parent="."]
 z_index = 14
 z_as_relative = false
-offset_left = 232.0
-offset_top = 8.0
-offset_right = 280.0
-offset_bottom = 52.0
+offset_left = 231.0
+offset_top = 6.0
+offset_right = 279.0
+offset_bottom = 50.0
 scale = Vector2(0.5, 0.5)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
 theme_override_fonts/normal_font = ExtResource("1_q4gpi")
 text = "60"
-script = ExtResource("3_kiutl")
+script = ExtResource("5_a44fa")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 process_mode = 3
@@ -45,7 +102,7 @@ visible = false
 offset_right = 256.0
 offset_bottom = 240.0
 texture = ExtResource("4_w8g20")
-script = ExtResource("5_y818r")
+script = ExtResource("7_6gt25")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="TextureRect"]
 stream = ExtResource("5_b6vm4")

@@ -6,16 +6,22 @@ extends Node2D
 	1: preload("res://objects/snowball.tscn"),
 	2: preload("res://objects/air_block.tscn"),
 	3: preload("res://objects/platform.tscn"),
-	4: preload("res://objects/end_ball.tscn"),
-	5: preload("res://objects/wind_controller.tscn"),
-	6: preload("res://objects/icicle.tscn"),
-	7: preload("res://objects/cloud.tscn"),
-	8: preload("res://objects/cloud.tscn")
+	4: preload("res://objects/platform.tscn"),
+	5: preload("res://objects/end_ball.tscn"),
+	6: preload("res://objects/wind_controller.tscn"),
+	7: preload("res://objects/icicle.tscn"),
+	8: preload("res://objects/cloud.tscn"),
+	9: preload("res://objects/cloud.tscn")
 }
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var level_string = "0,1,32,1,0,0;0,0,32,1,1,0;7,3,0;0,6,7,32;0,12,8,32;0,18,7,32;0,24,8,32;0,30,7,32"
+	var global = get_node("/root/Global")
+	
+	var file = FileAccess.open("user://levels/" + str(global.custom_level) + ".txt", FileAccess.READ)
+	print(file)
+	var level_string = file.get_as_text()
+	#var level_string = "0,1,32,1,0,0;0,0,32,1,1,0;7,3,0;0,6,7,32;0,12,8,32;0,18,7,32;0,24,8,32;0,30,7,32"
 	var object_array = Array(level_string.split(";"))
 	var level_array = Array()
 	for i in object_array.size():
@@ -42,7 +48,8 @@ func _ready():
 					silly = objects[i[2]].instantiate()
 					silly.position.x = (i[0]) + k * 8
 					silly.position.y = (-i[1] - 1) * 8
-					if i[2] == 8: silly.add_to_group("2")
+					if i[2] == 4: silly.add_to_group("invert")
+					if i[2] == 9: silly.add_to_group("2")
 					add_child(silly)
 			else:
 				add_child(silly)

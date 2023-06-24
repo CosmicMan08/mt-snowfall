@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/Music.gd" id="2_b7ovg"]
 [ext_resource type="TileSet" uid="uid://b5tcw3p3ixwg6" path="res://tileset.tres" id="3_n23ik"]
 [ext_resource type="PackedScene" uid="uid://cb82ameh2l7nw" path="res://objects/fella.tscn" id="5_xuw00"]
-[ext_resource type="PackedScene" path="res://objects/platform.tscn" id="6_0qga8"]
+[ext_resource type="PackedScene" uid="uid://dp5icrpjiejic" path="res://objects/platform.tscn" id="6_0qga8"]
 [ext_resource type="Texture2D" uid="uid://bv4add4vqmisy" path="res://graphics/mountain bg.png" id="7_q5a3p"]
 [ext_resource type="PackedScene" uid="uid://bqhpy0nudpew8" path="res://game UI.tscn" id="8_ll36l"]
 [ext_resource type="PackedScene" path="res://objects/end_ball.tscn" id="9_xpfa1"]

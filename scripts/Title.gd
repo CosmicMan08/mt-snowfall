@@ -10,6 +10,8 @@ const settings_theme = preload("res://sounds/settings.wav")
 
 var config = ConfigFile.new()
 
+@onready var global = get_node("/root/Global")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if config.load("user://save.cfg") != OK:
@@ -79,6 +81,9 @@ func _process(delta):
 					config.set_value("Settings", "snow", !config.get_value("Settings", "snow"))
 					$Snow_Value.text = str(config.get_value("Settings", "snow"))
 					config.save("user://save.cfg")
+			6:
+				if Input.is_action_just_pressed("ui_accept"):
+					get_tree().change_scene_to_file("res://level editor.tscn")
 			7:
 				if Input.is_action_just_pressed("ui_accept"):
 					get_tree().change_scene_to_file("res://levels/gallery.tscn")
@@ -95,7 +100,7 @@ func _process(delta):
 			in_settings = false
 			
 			$Progress.visible = true
-			$Endless.visible = true
+			#$Endless.visible = true
 			$Options.visible = true
 			$RichTextLabel.visible = true
 			$BestTimer.visible = true
@@ -123,23 +128,29 @@ func _process(delta):
 			if Input.is_action_just_pressed("ui_up"): mode -= 1
 			if Input.is_action_just_pressed("ui_down"): mode += 1
 			
-			mode = mode%3
-			if mode < 0: mode = 2
-				
+			mode = mode%2
+			if mode < 0: mode = 1
+			
 			$RichTextLabel.text = "MOUNTAIN " + str(level) 
 
-			$Pointer.position.y = 24 + (16 * mode)
+			$Pointer.position.y = 24 + (24 * mode)
 			
-			if Input.is_action_just_pressed("ui_accept") and mode != 2:
-				$Timer.start()
-				$AudioStreamPlayer.playing = false
-				$jingle.playing = true
+			print(FileAccess.file_exists("user://levels/"+str(level)+".txt"))
+			
+			if Input.is_action_just_pressed("ui_accept") and mode != 1:
+				if mode == 0 and (!ResourceLoader.exists("res://levels/"+str(level)+".tscn") and !FileAccess.file_exists("user://levels/"+str(level)+".txt")):
+					$"nuh uh".playing = true
+					$AudioStreamPlayer.volume_db *= 2
+				else:
+					$Timer.start()
+					$AudioStreamPlayer.playing = false
+					$jingle.playing = true
 			elif Input.is_action_just_pressed("ui_accept"):
 				#$AudioStreamPlayer.stream = settings_theme
 				in_settings = true
 				
 				$Progress.visible = false
-				$Endless.visible = false
+				#$Endless.visible = false
 				$Options.visible = false
 				$RichTextLabel.visible = false
 				$BestTimer.visible = false
@@ -167,17 +178,22 @@ func _process(delta):
 				$Snow_Value.text = str(config.get_value("Settings", "snow"))
 		elif $Timer.time_left < 0.5:
 			config.save("user://save.cfg")
-			if mode == 0: get_tree().change_scene_to_file("res://levels/"+str(level)+".tscn")
-			elif mode == 1: get_tree().change_scene_to_file("res://levels/endless.tscn")
+			if mode == 0:
+				if FileAccess.file_exists("user://levels/"+str(level)+".txt"):
+					global.custom_level = level
+					get_tree().change_scene_to_file("res://levels/level loading.tscn")
+				else:
+					get_tree().change_scene_to_file("res://levels/"+str(level)+".tscn")
+			#elif mode == 1: get_tree().change_scene_to_file("res://levels/endless.tscn")
 		else:
 			if int($Timer.time_left*4) % 2:
 				if mode == 0: $Progress.visible = false
-				else: $Endless.visible = false
+				#else: $Endless.visible = false
 			else:
 				if mode == 0: $Progress.visible = true
-				else: $Endless.visible = true
+				#else: $Endless.visible = true
 
-		print(mode)
+		#print(mode)
 
 	if config.get_value("level_"+str(level),"best_time") != null:
 		var time_elapsed = config.get_value("level_"+str(level),"best_time")

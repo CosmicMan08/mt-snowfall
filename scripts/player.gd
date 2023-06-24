@@ -137,8 +137,8 @@ func _physics_process(delta):
 				elif Input.is_action_pressed("ui_down"):
 					$Tail.offset.y = 2
 					$AnimationPlayer.play("fox_crouch")
-				elif ((get_tree().get_root().get_node("Node2D/TileMap") in $"left check".get_overlapping_bodies())
-				!= (get_tree().get_root().get_node("Node2D/TileMap") in $"right check".get_overlapping_bodies())):
+				elif (area_coll($"left check".get_overlapping_bodies())
+				!= area_coll($"right check".get_overlapping_bodies())):
 					$AnimationPlayer.play("fox_teeter")
 				else:
 					if yawn_timer > 0 and $AnimationPlayer.current_animation != "fox_yawn":
@@ -155,7 +155,6 @@ func _physics_process(delta):
 		
 		#if old_direction != direction and not old_direction and direction: # or old_direction != 0
 		#	$"Turn Around".start()
-		print(str($"left check".get_overlapping_bodies()))
 		
 		#snowball stuff
 		if hitfall_timer > 0:
@@ -163,7 +162,7 @@ func _physics_process(delta):
 			hitfall_timer -= 1
 			if $AnimationPlayer.current_animation != "fox_snowballed":
 				$AnimationPlayer.play("fox_snowballed")
-		elif not get_tree().get_root().get_node("Node2D/TileMap") in $Area2D.get_overlapping_bodies():
+		elif area_coll($Area2D.get_overlapping_bodies()):
 			$CollisionShape2D.disabled = false
 
 	was_on_floor = is_on_floor()

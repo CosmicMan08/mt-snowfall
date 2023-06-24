@@ -1,6 +1,7 @@
-[gd_scene load_steps=23 format=3 uid="uid://kojeeji43aud"]
+[gd_scene load_steps=24 format=3 uid="uid://kojeeji43aud"]
 
 [ext_resource type="Texture2D" uid="uid://coomsruw51yye" path="res://gallery/un aliased.png" id="1_k807y"]
+[ext_resource type="Texture2D" uid="uid://vqvhyrcgw4yu" path="res://gallery/bad climb.png" id="1_oto8n"]
 [ext_resource type="AudioStream" uid="uid://cgw4eww1rrfcf" path="res://sounds/gallery.wav" id="2_sfn2i"]
 [ext_resource type="Script" path="res://scripts/Music.gd" id="3_eksxt"]
 [ext_resource type="TileSet" uid="uid://b5tcw3p3ixwg6" path="res://tileset.tres" id="3_m1vbu"]
@@ -29,6 +30,10 @@ size = Vector2(16, 1224)
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(0, -256)
+
+[node name="BadClimb" type="Sprite2D" parent="."]
+position = Vector2(1152, 160)
+texture = ExtResource("1_oto8n")
 
 [node name="UnAliased" type="Sprite2D" parent="."]
 position = Vector2(1056, 184)
