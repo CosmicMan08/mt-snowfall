@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cb82ameh2l7nw" path="res://objects/fella.tscn" id="5_xuw00"]
 [ext_resource type="PackedScene" uid="uid://dp5icrpjiejic" path="res://objects/platform.tscn" id="6_0qga8"]
 [ext_resource type="Texture2D" uid="uid://bv4add4vqmisy" path="res://graphics/mountain bg.png" id="7_q5a3p"]
-[ext_resource type="PackedScene" uid="uid://bqhpy0nudpew8" path="res://game UI.tscn" id="8_ll36l"]
+[ext_resource type="PackedScene" uid="uid://bbgywvn4sk7nd" path="res://game UI.tscn" id="8_ll36l"]
 [ext_resource type="PackedScene" path="res://objects/end_ball.tscn" id="9_xpfa1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5idm1"]

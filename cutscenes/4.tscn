@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3]
+[gd_scene load_steps=12 format=3 uid="uid://vieqk2gx4rqu"]
 
 [ext_resource type="AudioStream" uid="uid://wv5mjg01r0x2" path="res://sounds/sleep cutscene.wav" id="1_3cybd"]
 [ext_resource type="Script" path="res://scripts/Music.gd" id="2_nkyhb"]
@@ -277,7 +277,7 @@ script = ExtResource("2_nkyhb")
 position = Vector2(240, -360)
 texture = ExtResource("3_b1so2")
 hframes = 10
-vframes = 4
+vframes = 5
 frame = 4
 
 [node name="Tail" type="Sprite2D" parent="Body"]
@@ -285,7 +285,7 @@ z_index = -1
 z_as_relative = false
 texture = ExtResource("3_b1so2")
 hframes = 10
-vframes = 4
+vframes = 5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -384,3 +384,4 @@ cell_quadrant_size = 8
 format = 2
 
 [connection signal="finished" from="cutscene" to="cutscene" method="_on_finished"]
+[connection signal="animation_finished" from="AnimationPlayer" to="AnimationPlayer" method="_on_animation_finished"]

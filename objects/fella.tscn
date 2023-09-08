@@ -405,25 +405,25 @@ script = ExtResource("1_ivkka")
 [node name="Tail" type="Sprite2D" parent="."]
 texture = ExtResource("2_6knxx")
 hframes = 10
-vframes = 4
+vframes = 5
 script = ExtResource("3_wxs8d")
 
 [node name="1" type="Sprite2D" parent="Tail"]
 position = Vector2(-256, 0)
 texture = ExtResource("2_6knxx")
 hframes = 10
-vframes = 4
+vframes = 5
 
 [node name="2" type="Sprite2D" parent="Tail"]
 position = Vector2(256, 0)
 texture = ExtResource("2_6knxx")
 hframes = 10
-vframes = 4
+vframes = 5
 
 [node name="Body" type="Sprite2D" parent="."]
 texture = ExtResource("2_6knxx")
 hframes = 10
-vframes = 4
+vframes = 5
 frame = 4
 script = ExtResource("3_wxs8d")
 
@@ -431,13 +431,13 @@ script = ExtResource("3_wxs8d")
 position = Vector2(-256, 0)
 texture = ExtResource("2_6knxx")
 hframes = 10
-vframes = 4
+vframes = 5
 
 [node name="2" type="Sprite2D" parent="Body"]
 position = Vector2(256, 0)
 texture = ExtResource("2_6knxx")
 hframes = 10
-vframes = 4
+vframes = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 7)

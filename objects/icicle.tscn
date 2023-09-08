@@ -1,8 +1,8 @@
-[gd_scene load_steps=13 format=3]
+[gd_scene load_steps=13 format=3 uid="uid://cqhotnuhn8wn2"]
 
 [ext_resource type="Texture2D" uid="uid://dfj8tl6u410qw" path="res://graphics/icicle.png" id="1_kt5g0"]
 [ext_resource type="Script" path="res://scripts/icicle.gd" id="1_mpha0"]
-[ext_resource type="TileSet" uid="uid://wafvvxlnolxn" path="res://tileset.tres" id="2_poqjf"]
+[ext_resource type="TileSet" uid="uid://b5tcw3p3ixwg6" path="res://tileset.tres" id="2_poqjf"]
 [ext_resource type="AudioStream" uid="uid://csvqmab6yinio" path="res://sounds/crash.wav" id="4_ojter"]
 [ext_resource type="Script" path="res://scripts/Sound.gd" id="5_aoagm"]
 
@@ -10,7 +10,7 @@
 size = Vector2(8, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1u4mq"]
-size = Vector2(8, 2)
+size = Vector2(6, 2)
 
 [sub_resource type="Animation" id="Animation_elbq1"]
 length = 0.001

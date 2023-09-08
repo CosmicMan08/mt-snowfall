@@ -69,7 +69,7 @@ func _physics_process(delta):
 				velocity.y += gravity * 3 * delta
 				
 			#floating code
-			if Input.is_action_just_pressed("ui_up") and !hasFloated and hitfall_timer == 0 and !isDiving:
+			if Input.is_action_just_pressed("move_up") and !hasFloated and hitfall_timer == 0 and !isDiving:
 				isFloating = true
 				hasFloated = true
 				$Float.start()
@@ -79,11 +79,11 @@ func _physics_process(delta):
 			elif isFloating:
 				isFloating = false
 				
-			if Input.is_action_just_released("ui_up") or $Float.time_left == 0:
+			if Input.is_action_just_released("move_up") or $Float.time_left == 0:
 				isFloating = false
 				
 				
-			if Input.is_action_just_pressed("ui_down") and !isFloating and hitfall_timer == 0:
+			if Input.is_action_just_pressed("move_down") and !isFloating and hitfall_timer == 0:
 				isDiving = true
 				velocity.y = 200
 				
@@ -115,7 +115,8 @@ func _physics_process(delta):
 			$jump.playing = true
 			
 		#move aaa
-		var direction = Input.get_axis("ui_left", "ui_right")
+		var direction = Input.get_axis("move_left", "move_right")
+		print(direction)
 		if direction:
 			if isFloating: velocity.x = direction * FLOAT_SPEED + wind_dir
 			else: velocity.x = direction * SPEED + wind_dir
@@ -131,10 +132,10 @@ func _physics_process(delta):
 			old_direction = direction
 		else:
 			if is_on_floor():
-				if Input.is_action_pressed("ui_up"):
+				if Input.is_action_pressed("move_up"):
 					$Tail.offset.y = -1
 					$AnimationPlayer.play("fox_lookup")
-				elif Input.is_action_pressed("ui_down"):
+				elif Input.is_action_pressed("move_down"):
 					$Tail.offset.y = 2
 					$AnimationPlayer.play("fox_crouch")
 				elif (area_coll($"left check".get_overlapping_bodies())
@@ -162,7 +163,7 @@ func _physics_process(delta):
 			hitfall_timer -= 1
 			if $AnimationPlayer.current_animation != "fox_snowballed":
 				$AnimationPlayer.play("fox_snowballed")
-		elif area_coll($Area2D.get_overlapping_bodies()):
+		elif not area_coll($Area2D.get_overlapping_bodies()):
 			$CollisionShape2D.disabled = false
 
 	was_on_floor = is_on_floor()
