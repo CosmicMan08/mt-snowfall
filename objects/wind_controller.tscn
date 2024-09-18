@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=5 format=3 uid="uid://dcy8vxywf48of"]
 
 [ext_resource type="Script" path="res://scripts/wind_controller.gd" id="1_4gjjv"]
 [ext_resource type="Texture2D" uid="uid://doqvjva301bb4" path="res://graphics/wind.png" id="1_ij0gp"]
 [ext_resource type="AudioStream" uid="uid://c6328kaj5vll" path="res://sounds/fwoosh.wav" id="3_cc1ly"]
+[ext_resource type="Script" path="res://scripts/Sound.gd" id="4_nihu3"]
 
 [node name="Wind Controller" type="Node2D"]
 script = ExtResource("1_4gjjv")
@@ -11,6 +12,7 @@ script = ExtResource("1_4gjjv")
 follow_viewport_enabled = true
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="CanvasLayer"]
+layer = 1
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/ParallaxBackground"]
 offset_right = 256.0
@@ -30,5 +32,6 @@ offset_left = -256.0
 offset_bottom = 240.0
 texture = ExtResource("1_ij0gp")
 
-[node name="fwoosh" type="AudioStreamPlayer2D" parent="."]
+[node name="fwoosh" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_cc1ly")
+script = ExtResource("4_nihu3")

@@ -1,11 +1,12 @@
-[gd_scene load_steps=9 format=3]
+[gd_scene load_steps=10 format=3 uid="uid://bs22v7263p2gq"]
 
 [ext_resource type="AudioStream" uid="uid://blcbsn1f08omq" path="res://sounds/climb.wav" id="1_10ijw"]
 [ext_resource type="Script" path="res://scripts/Music.gd" id="2_2tdjm"]
-[ext_resource type="TileSet" uid="uid://wafvvxlnolxn" path="res://tileset.tres" id="3_cdu43"]
-[ext_resource type="PackedScene" uid="uid://k5ddqm0dvbs5" path="res://objects/fella.tscn" id="4_71aaw"]
-[ext_resource type="PackedScene" path="res://objects/platform.tscn" id="5_76htb"]
-[ext_resource type="PackedScene" path="res://objects/air_block.tscn" id="6_nm1jj"]
+[ext_resource type="TileSet" uid="uid://b5tcw3p3ixwg6" path="res://tileset.tres" id="3_cdu43"]
+[ext_resource type="PackedScene" uid="uid://cb82ameh2l7nw" path="res://objects/fella.tscn" id="4_71aaw"]
+[ext_resource type="PackedScene" uid="uid://dp5icrpjiejic" path="res://objects/platform.tscn" id="5_76htb"]
+[ext_resource type="PackedScene" uid="uid://3g1fl2jslati" path="res://objects/air_block.tscn" id="6_nm1jj"]
+[ext_resource type="FontFile" uid="uid://bydnw86rjds40" path="res://emulogic.ttf" id="7_6kcqu"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_xypl7"]
 a = Vector2(0, 240)
@@ -41,13 +42,13 @@ disabled = true
 position = Vector2(40, -168)
 
 [node name="Air Block" parent="TileMap" instance=ExtResource("6_nm1jj")]
-position = Vector2(28, -220)
+position = Vector2(24, -224)
 
 [node name="Platform2" parent="TileMap" instance=ExtResource("5_76htb")]
 position = Vector2(128, -304)
 
 [node name="Air Block2" parent="TileMap" instance=ExtResource("6_nm1jj")]
-position = Vector2(124, -388)
+position = Vector2(120, -392)
 
 [node name="TileMap2" type="TileMap" parent="."]
 position = Vector2(0, -672)
@@ -68,13 +69,13 @@ disabled = true
 position = Vector2(40, -168)
 
 [node name="Air Block" parent="TileMap2" instance=ExtResource("6_nm1jj")]
-position = Vector2(28, -220)
+position = Vector2(24, -224)
 
 [node name="Platform2" parent="TileMap2" instance=ExtResource("5_76htb")]
 position = Vector2(128, -304)
 
 [node name="Air Block2" parent="TileMap2" instance=ExtResource("6_nm1jj")]
-position = Vector2(124, -388)
+position = Vector2(120, -392)
 
 [node name="TileMap3" type="TileMap" parent="."]
 position = Vector2(0, 64)
@@ -95,13 +96,13 @@ disabled = true
 position = Vector2(40, -168)
 
 [node name="Air Block" parent="TileMap3" instance=ExtResource("6_nm1jj")]
-position = Vector2(28, -220)
+position = Vector2(24, -224)
 
 [node name="Platform2" parent="TileMap3" instance=ExtResource("5_76htb")]
 position = Vector2(128, -304)
 
 [node name="Air Block2" parent="TileMap3" instance=ExtResource("6_nm1jj")]
-position = Vector2(124, -388)
+position = Vector2(120, -392)
 
 [node name="fella" parent="." instance=ExtResource("4_71aaw")]
 position = Vector2(32, -400)
@@ -111,5 +112,15 @@ position = Vector2(32, -400)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="loop point"]
 position = Vector2(128, -756)
 shape = SubResource("RectangleShape2D_kv6lq")
+
+[node name="BestTimer" type="RichTextLabel" parent="."]
+offset_left = 8.0
+offset_top = -512.0
+offset_right = 488.0
+offset_bottom = -448.0
+scale = Vector2(0.5, 0.5)
+theme_override_colors/default_color = Color(0.647059, 0, 0.0823529, 1)
+theme_override_fonts/normal_font = ExtResource("7_6kcqu")
+text = "00:00:00"
 
 [connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="_on_finished"]

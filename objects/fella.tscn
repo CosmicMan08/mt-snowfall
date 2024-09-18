@@ -400,6 +400,7 @@ size = Vector2(8, 18)
 size = Vector2(4, 3)
 
 [node name="fella" type="CharacterBody2D"]
+position = Vector2(0, -8)
 script = ExtResource("1_ivkka")
 
 [node name="Tail" type="Sprite2D" parent="."]

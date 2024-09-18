@@ -100,7 +100,7 @@ func _process(delta):
 			in_settings = false
 			
 			$Progress.visible = true
-			#$Endless.visible = true
+			$Endless.visible = true
 			$Options.visible = true
 			$RichTextLabel.visible = true
 			$BestTimer.visible = true
@@ -128,16 +128,16 @@ func _process(delta):
 			if Input.is_action_just_pressed("ui_up"): mode -= 1
 			if Input.is_action_just_pressed("ui_down"): mode += 1
 			
-			mode = mode%2
-			if mode < 0: mode = 1
+			mode = mode%3
+			if mode < 0: mode = 2
 			
 			$RichTextLabel.text = "MOUNTAIN " + str(level) 
 
-			$Pointer.position.y = 24 + (24 * mode)
+			$Pointer.position.y = 24 + (16 * mode)
 			
-			print(FileAccess.file_exists("user://levels/"+str(level)+".txt"))
+			#print(FileAccess.file_exists("user://levels/"+str(level)+".txt"))
 			
-			if Input.is_action_just_pressed("ui_accept") and mode != 1:
+			if Input.is_action_just_pressed("ui_accept") and mode != 2:
 				if mode == 0 and (!ResourceLoader.exists("res://levels/"+str(level)+".tscn") and !FileAccess.file_exists("user://levels/"+str(level)+".txt")):
 					$"nuh uh".playing = true
 					$AudioStreamPlayer.volume_db *= 2
@@ -150,7 +150,7 @@ func _process(delta):
 				in_settings = true
 				
 				$Progress.visible = false
-				#$Endless.visible = false
+				$Endless.visible = false
 				$Options.visible = false
 				$RichTextLabel.visible = false
 				$BestTimer.visible = false
@@ -184,19 +184,34 @@ func _process(delta):
 					get_tree().change_scene_to_file("res://levels/level loading.tscn")
 				else:
 					get_tree().change_scene_to_file("res://levels/"+str(level)+".tscn")
-			#elif mode == 1: get_tree().change_scene_to_file("res://levels/endless.tscn")
+			elif mode == 1: get_tree().change_scene_to_file("res://levels/endless.tscn")
 		else:
 			if int($Timer.time_left*4) % 2:
 				if mode == 0: $Progress.visible = false
-				#else: $Endless.visible = false
+				else: $Endless.visible = false
 			else:
 				if mode == 0: $Progress.visible = true
-				#else: $Endless.visible = true
+				else: $Endless.visible = true
 
 		#print(mode)
 
 	if config.get_value("level_"+str(level),"best_time") != null:
 		var time_elapsed = config.get_value("level_"+str(level),"best_time")
+		var rank = config.get_value("level_"+str(level),"rank")
 		$BestTimer.text = "%02d:%02d:%02d" % [time_elapsed / 60, fmod(time_elapsed, 60), fmod(time_elapsed, 1) * 100]
+		match rank:
+			0:
+				$BestTimer.text += " S"
+			1:
+				$BestTimer.text += " A"
+			2:
+				$BestTimer.text += " B"
+			3:
+				$BestTimer.text += " C"
+			4:
+				$BestTimer.text += " D"
+			_:
+				$BestTimer.text += " F"
 	else:
 		config.set_value("level_"+str(level),"best_time",0)
+		config.set_value("level_"+str(level),"rank",6)

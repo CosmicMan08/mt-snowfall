@@ -1,0 +1,247 @@
+[gd_scene load_steps=10 format=3 uid="uid://c3jlslho52eot"]
+
+[ext_resource type="Texture2D" uid="uid://bvj1ldg5v1ean" path="res://graphics/title.png" id="1_0xtyu"]
+[ext_resource type="Script" path="res://scripts/Title.gd" id="2_1xinb"]
+[ext_resource type="AudioStream" uid="uid://bpxln4wyiieov" path="res://sounds/nuh uh.wav" id="3_7ergf"]
+[ext_resource type="Script" path="res://scripts/Sound.gd" id="4_y3st4"]
+[ext_resource type="AudioStream" uid="uid://dsct2qnix5qqt" path="res://sounds/begin.wav" id="5_euput"]
+[ext_resource type="AudioStream" uid="uid://dj1gyier1t0ub" path="res://sounds/title screen.wav" id="6_ph3pn"]
+[ext_resource type="Script" path="res://scripts/Music.gd" id="7_47iwi"]
+[ext_resource type="FontFile" uid="uid://bydnw86rjds40" path="res://emulogic.ttf" id="8_eplth"]
+[ext_resource type="Texture2D" uid="uid://dlgdh2a4kf1gp" path="res://graphics/pointer.png" id="9_kfnnu"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Title" type="Sprite2D" parent="."]
+position = Vector2(128, 120)
+texture = ExtResource("1_0xtyu")
+script = ExtResource("2_1xinb")
+
+[node name="Timer" type="Timer" parent="Title"]
+wait_time = 2.0
+
+[node name="nuh uh" type="AudioStreamPlayer" parent="Title"]
+stream = ExtResource("3_7ergf")
+volume_db = -9.127
+mix_target = 2
+script = ExtResource("4_y3st4")
+
+[node name="jingle" type="AudioStreamPlayer" parent="Title"]
+stream = ExtResource("5_euput")
+volume_db = -9.127
+mix_target = 2
+script = ExtResource("4_y3st4")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Title"]
+stream = ExtResource("6_ph3pn")
+volume_db = -9.127
+autoplay = true
+mix_target = 2
+script = ExtResource("7_47iwi")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Title"]
+offset_left = -65.0
+offset_top = 22.0
+offset_right = 64.0
+offset_bottom = 72.0
+
+[node name="Progress" type="RichTextLabel" parent="Title/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0.968627, 0.968627, 0.988235, 1)
+theme_override_fonts/normal_font = ExtResource("8_eplth")
+text = "PROGRESSION MODE"
+
+[node name="Endless" type="RichTextLabel" parent="Title/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0.968627, 0.968627, 0.988235, 1)
+theme_override_fonts/normal_font = ExtResource("8_eplth")
+text = "ENDLESS MODE"
+
+[node name="Options" type="RichTextLabel" parent="Title/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0.968627, 0.968627, 0.988235, 1)
+theme_override_fonts/normal_font = ExtResource("8_eplth")
+text = "options/extras"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Title"]
+offset_left = -41.0
+offset_top = 70.0
+offset_right = 186.0
+offset_bottom = 122.0
+scale = Vector2(0.5, 0.5)
+theme_override_colors/default_color = Color(0.647059, 0.878431, 0.988235, 1)
+theme_override_fonts/normal_font = ExtResource("8_eplth")
+text = "MOUNTAIN 1"
+
+[node name="BestTimer" type="RichTextLabel" parent="Title"]
+offset_left = -33.0
+offset_top = 78.0
+offset_right = 194.0
+offset_bottom = 130.0
+scale = Vector2(0.5, 0.5)
+theme_override_colors/default_color = Color(0.647059, 0.878431, 0.988235, 1)
+theme_override_fonts/normal_font = ExtResource("8_eplth")
+text = "00:00:00"
+
+[node name="Pointer" type="Sprite2D" parent="Title"]
+position = Vector2(-80, 24)
+texture = ExtResource("9_kfnnu")
+offset = Vector2(4, 4)
+
+[node name="FPS" type="RichTextLabel" parent="Title"]
+visible = false
+offset_left = -65.0
+offset_top = 22.0
+offset_right = 193.0
+offset_bottom = 42.0
+scale = Vector2(0.5, 0.5)
+theme_override_colors/default_color = Color(0.647059, 0.878431, 0.988235, 1)
+theme_override_fonts/normal_font = ExtResource("8_eplth")
+text = "FPS counter"
+
+[node name="Limit" type="RichTextLabel" parent="Title"]
+visible = false
+offset_left = -65.0
+offset_top = 30.0
+offset_right = 193.0
+offset_bottom = 50.0
+scale = Vector2(0.5, 0.5)
+theme_override_colors/default_color = Color(0.968627, 0.968627, 0.988235, 1)
+theme_override_fonts/normal_font = ExtResource("8_eplth")
+text = "FPS LIMIT"
+
+[node name="Music" type="RichTextLabel" parent="Title"]
+visible = false
+offset_left = -65.0
+offset_top = 38.0
+offset_right = 193.0
+offset_bottom = 58.0
+scale = Vector2(0.5, 0.5)
+theme_override_colors/default_color = Color(0.647059, 0.878431, 0.988235, 1)
+theme_override_fonts/normal_font = ExtResource("8_eplth")
+text = "MUSIC VOLUME"
+
+[node name="Sound" type="RichTextLabel" parent="Title"]
+visible = false
+offset_left = -65.0
+offset_top = 46.0
+offset_right = 193.0
+offset_bottom = 66.0
+scale = Vector2(0.5, 0.5)
+theme_override_colors/default_color = Color(0.968627, 0.968627, 0.988235, 1)
+theme_override_fonts/normal_font = ExtResource("8_eplth")
+text = "SOUND VOLUME"
+
+[node name="Snow" type="RichTextLabel" parent="Title"]
+visible = false
+offset_left = -65.0
+offset_top = 54.0
+offset_right = 193.0
+offset_bottom = 74.0
+scale = Vector2(0.5, 0.5)
+theme_override_colors/default_color = Color(0.647059, 0.878431, 0.988235, 1)
+theme_override_fonts/normal_font = ExtResource("8_eplth")
+text = "SNOWING"
+
+[node name="FPS_Value" type="RichTextLabel" parent="Title"]
+visible = false
+offset_left = 39.0
+offset_top = 22.0
+offset_right = 297.0
+offset_bottom = 42.0
+scale = Vector2(0.5, 0.5)
+theme_override_colors/default_color = Color(0.647059, 0.878431, 0.988235, 1)
+theme_override_fonts/normal_font = ExtResource("8_eplth")
+text = "OFF"
+
+[node name="Limit_Value" type="RichTextLabel" parent="Title"]
+visible = false
+offset_left = 39.0
+offset_top = 30.0
+offset_right = 297.0
+offset_bottom = 50.0
+scale = Vector2(0.5, 0.5)
+theme_override_colors/default_color = Color(0.968627, 0.968627, 0.988235, 1)
+theme_override_fonts/normal_font = ExtResource("8_eplth")
+text = "60"
+
+[node name="Music_Value" type="RichTextLabel" parent="Title"]
+visible = false
+offset_left = 39.0
+offset_top = 38.0
+offset_right = 297.0
+offset_bottom = 58.0
+scale = Vector2(0.5, 0.5)
+theme_override_colors/default_color = Color(0.647059, 0.878431, 0.988235, 1)
+theme_override_fonts/normal_font = ExtResource("8_eplth")
+text = "100"
+
+[node name="Sound_Value" type="RichTextLabel" parent="Title"]
+visible = false
+offset_left = 39.0
+offset_top = 46.0
+offset_right = 297.0
+offset_bottom = 66.0
+scale = Vector2(0.5, 0.5)
+theme_override_colors/default_color = Color(0.968627, 0.968627, 0.988235, 1)
+theme_override_fonts/normal_font = ExtResource("8_eplth")
+text = "100"
+
+[node name="Snow_Value" type="RichTextLabel" parent="Title"]
+visible = false
+offset_left = 39.0
+offset_top = 54.0
+offset_right = 297.0
+offset_bottom = 74.0
+scale = Vector2(0.5, 0.5)
+theme_override_colors/default_color = Color(0.647059, 0.878431, 0.988235, 1)
+theme_override_fonts/normal_font = ExtResource("8_eplth")
+text = "OFF"
+
+[node name="Levels" type="RichTextLabel" parent="Title"]
+visible = false
+offset_left = -49.0
+offset_top = 62.0
+offset_right = 161.0
+offset_bottom = 82.0
+scale = Vector2(0.5, 0.5)
+theme_override_colors/default_color = Color(0.968627, 0.968627, 0.988235, 1)
+theme_override_fonts/normal_font = ExtResource("8_eplth")
+text = "CUSTOM LEVELS"
+
+[node name="Editor" type="RichTextLabel" parent="Title"]
+visible = false
+offset_left = -49.0
+offset_top = 70.0
+offset_right = 145.0
+offset_bottom = 90.0
+scale = Vector2(0.5, 0.5)
+theme_override_colors/default_color = Color(0.647059, 0.878431, 0.988235, 1)
+theme_override_fonts/normal_font = ExtResource("8_eplth")
+text = "LEVEL EDITOR"
+
+[node name="Gallery" type="RichTextLabel" parent="Title"]
+visible = false
+offset_left = -25.0
+offset_top = 78.0
+offset_right = 89.0
+offset_bottom = 98.0
+scale = Vector2(0.5, 0.5)
+theme_override_colors/default_color = Color(0.968627, 0.968627, 0.988235, 1)
+theme_override_fonts/normal_font = ExtResource("8_eplth")
+text = "GALLERY"
+
+[node name="Back" type="RichTextLabel" parent="Title"]
+visible = false
+offset_left = -25.0
+offset_top = 86.0
+offset_right = 89.0
+offset_bottom = 106.0
+scale = Vector2(0.5, 0.5)
+theme_override_colors/default_color = Color(0.647059, 0.878431, 0.988235, 1)
+theme_override_fonts/normal_font = ExtResource("8_eplth")
+text = "GO BACK"
+
+[connection signal="finished" from="Title/nuh uh" to="Title/nuh uh" method="_on_finished"]
+[connection signal="finished" from="Title/jingle" to="Title/jingle" method="_on_finished"]
+[connection signal="finished" from="Title/AudioStreamPlayer" to="Title/AudioStreamPlayer" method="_on_finished"]

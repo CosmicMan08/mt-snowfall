@@ -62,29 +62,72 @@ func _process(delta):
 
 	if Input.is_action_just_pressed("ui_accept") or Input.is_action_just_pressed("left_mouse"):
 		if py >= 27:
-			print(str(px) + " " + str(py))
-			if px == 14:
+			#print(str(px) + " " + str(py))
+			# detection for the top stuff. the changing for tiles and tools
+			print("this is px " + str(px))
+			match px:
+				2.0:                   # tools
+					tool = 0
+				5.0:
+					tool = 1
+				8.0:
+					tool = 2
+				14.0:                # tiles
 					tile = 0
-			elif px == 17:
+				17.0:
 					tile = 1
-			elif px == 20:
+				20.0:
 					tile = 2
-			elif px == 23:
+				23.0:
 					tile = 3
-			elif px == 26:
+				26.0:                    # if this game somehow gets a modding community i'm so sorry i'm  lazy coder this sucks i know
 					tile = 4
-			elif px == 29:
+				29.0:
 					tile = 5
-			else: 
+				_: 
+					if tool == 0:
+						if len(quick_access[tile]) == 2:
+							level_array.append([px,py,1,1,quick_access[tile][0],quick_access[tile][1]])
+							
+							var silly = lvl_obj.instantiate()
+							silly.position.x = px * 8
+							silly.position.y = py * 8
+							silly.Sprite2D2.visible = false
+							silly.Sprite2D.visible = true
+							silly.Sprite2D.frame = quick_access[tile][0]
+							add_child(silly)
+						else:
+							level_array.append([px,py,quick_access[tile][0]])
+							
+							var silly = lvl_obj.instantiate()
+							silly.position.x = px * 8
+							silly.position.y = py * 8
+							silly.Sprite2D.visible = false
+							silly.Sprite2D2.visible = true
+							silly.Sprite2D2.frame = quick_access[tile][0]
+							add_child(silly)
+		else:
+			if tool == 0:
 				if len(quick_access[tile]) == 2:
 					level_array.append([px,py,1,1,quick_access[tile][0],quick_access[tile][1]])
+					
+					var silly = lvl_obj.instantiate()
+					silly.position.x = px * 8
+					silly.position.y = py * 8
+					silly.get_node("Sprite2D2").visible = false
+					silly.get_node("Sprite2D").visible = true
+					silly.get_node("Sprite2D").frame = quick_access[tile][0]
+					add_child(silly)
 				else:
 					level_array.append([px,py,quick_access[tile][0]])
-		else:
-			if len(quick_access[tile]) == 2:
-				level_array.append([px,py,1,1,quick_access[tile][0],quick_access[tile][1]])
-			else:
-				level_array.append([px,py,quick_access[tile][0]])
+					
+					var silly = lvl_obj.instantiate()
+					silly.position.x = px * 8
+					silly.position.y = py * 8
+					silly.get_node("Sprite2D").visible = false
+					silly.get_node("Sprite2D2").visible = true
+					silly.get_node("Sprite2D2").frame = quick_access[tile][0]
+					add_child(silly)
 		render()
 		print(tile)
 		
@@ -101,15 +144,17 @@ func _process(delta):
 		print(lvl_txt)
 
 func render():
-	for i in level_array:
-		if len(i) == 3 or len(i) == 4:
-			$ObjectMap.set_cell(0, Vector2(int(i[0]),-int(i[1]) - 1),0,Vector2(i[2]%5, floor(i[2]/5)),0)
-		else:
-			for x in i[2]:
-				for y in i[3]:
-					$TileMap.set_cell(0, Vector2(int(i[0] + x),-int(i[1]) - 1 - y),0,Vector2(i[4],i[5]),0)
+	print(tool)
+	print(tile)
+	#for i in level_array:
+	#	if len(i) == 3 or len(i) == 4:
+	#		$ObjectMap.set_cell(0, Vector2(int(i[0]),-int(i[1]) - 1),0,Vector2(i[2]%5, floor(i[2]/5)),0)
+	#	else:
+	#		for x in i[2]:
+	#			for y in i[3]:
+	#				$TileMap.set_cell(0, Vector2(int(i[0] + x),-int(i[1]) - 1 - y),0,Vector2(i[4],i[5]),0)
 	
-	for i in range(1,7):
+	for i in range(1,7): #for all 6 item boxes
 		var item = get_node("CanvasLayer/ParallaxBackground/EditorItem"+str(i))
 		if len(quick_access[i-1]) == 1:
 			get_node("CanvasLayer/ParallaxBackground/EditorItem"+str(i)+"/ObjectMap").set_cell(0, Vector2(0,0), 0, Vector2(quick_access[i-1][0]%5, floor(quick_access[i-1][0]/5)),0)
@@ -122,6 +167,16 @@ func render():
 			item.frame = 1
 		else:
 			item.frame = 0
+	
+	for i in range(1,4): #for all 3 tool boxes
+		var item = get_node("CanvasLayer/ParallaxBackground/EditorTool"+str(i))
+		
+		if i == tool + 1:
+			item.frame = 1
+		else:
+			item.frame = 0
+			
+	$Pointer.frame = tool
 		
 	var lvl_txt = ""
 	for i in level_array:

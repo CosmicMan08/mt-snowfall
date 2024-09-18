@@ -122,7 +122,7 @@ position = Vector2(4, 4)
 shape = SubResource("RectangleShape2D_sgdlu")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2Dthethird"]
-position = Vector2(-256, 0)
+position = Vector2(-256, 1)
 shape = SubResource("RectangleShape2D_sgdlu")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Area2Dthethird"]

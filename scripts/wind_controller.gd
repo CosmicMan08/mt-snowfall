@@ -14,32 +14,31 @@ func _process(delta):
 	#print(wind_timer)
 	wind_timer += delta
 	
-	
-	if wind_timer > 5 and wind_timer < 10:
+	if wind_timer > 0 and wind_timer < 3:
 		$CanvasLayer/ParallaxBackground/TextureRect.visible = true
 		
 		$CanvasLayer/ParallaxBackground/TextureRect.flip_h = false
 		$CanvasLayer/ParallaxBackground/TextureRect/"1".flip_h = false
 		$CanvasLayer/ParallaxBackground/TextureRect/"2".flip_h = false
 		
-		$CanvasLayer/ParallaxBackground/TextureRect.position.x = 51.2 * fmod(wind_timer, 5.0)
+		$CanvasLayer/ParallaxBackground/TextureRect.position.x = 510.2 * fmod(wind_timer, 0.5)
 		
 		$fwoosh.playing = true
 		
 		fella.wind_dir = 32 
-	elif wind_timer > 15 and wind_timer < 20:
+	elif wind_timer > 6 and wind_timer < 9:
 		$CanvasLayer/ParallaxBackground/TextureRect.visible = true
 		
 		$CanvasLayer/ParallaxBackground/TextureRect.flip_h = true
 		$CanvasLayer/ParallaxBackground/TextureRect/"1".flip_h = true
 		$CanvasLayer/ParallaxBackground/TextureRect/"2".flip_h = true
 		
-		$CanvasLayer/ParallaxBackground/TextureRect.position.x = -51.2 * fmod(wind_timer, 5.0)
+		$CanvasLayer/ParallaxBackground/TextureRect.position.x = -510.2 * fmod(wind_timer, 0.5)
 		
 		$fwoosh.playing = true
 		
 		fella.wind_dir = -32
-	elif wind_timer > 20: wind_timer = 0
+	elif wind_timer > 12: wind_timer = 0
 	else:
 		$CanvasLayer/ParallaxBackground/TextureRect.visible = false
 		fella.wind_dir = 0

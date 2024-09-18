@@ -1,12 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://cecu0rtqglyi1"]
+[gd_scene load_steps=11 format=3 uid="uid://cecu0rtqglyi1"]
 
 [ext_resource type="Script" path="res://scripts/level editor.gd" id="1_tdxw7"]
-[ext_resource type="Texture2D" uid="uid://dlgdh2a4kf1gp" path="res://graphics/pointer.png" id="2_elb73"]
 [ext_resource type="TileSet" uid="uid://b5tcw3p3ixwg6" path="res://tileset.tres" id="2_ivsi8"]
 [ext_resource type="Texture2D" uid="uid://bvkqyu6rqwk7t" path="res://graphics/object icons.png" id="3_8shvi"]
 [ext_resource type="Texture2D" uid="uid://d2k1n5mpk4dj5" path="res://graphics/editor_item.png" id="5_7n52a"]
 [ext_resource type="AudioStream" uid="uid://cgw4eww1rrfcf" path="res://sounds/gallery.wav" id="6_0wrqp"]
+[ext_resource type="Texture2D" uid="uid://ddkuwh27dq6py" path="res://graphics/editor_tool.png" id="7_6mgdb"]
 [ext_resource type="Script" path="res://scripts/Music.gd" id="7_rj3d4"]
+[ext_resource type="Texture2D" uid="uid://dtnvlg11iw7ar" path="res://graphics/tool icons.png" id="8_q64p8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yn208"]
 texture = ExtResource("3_8shvi")
@@ -194,15 +195,43 @@ tile_set = SubResource("TileSet_ijr5l")
 cell_quadrant_size = 8
 format = 2
 
-[node name="Pointer" type="Sprite2D" parent="."]
-z_index = 6
-position = Vector2(80, -72)
-texture = ExtResource("2_elb73")
-centered = false
-offset = Vector2(0, -8)
+[node name="EditorTool1" type="Sprite2D" parent="CanvasLayer/ParallaxBackground"]
+position = Vector2(20, 20)
+texture = ExtResource("7_6mgdb")
+hframes = 3
 
-[node name="Camera2D" type="Camera2D" parent="Pointer"]
-position = Vector2(-80, 40)
+[node name="ToolIcons" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/EditorTool1"]
+texture = ExtResource("8_q64p8")
+hframes = 3
+
+[node name="EditorTool2" type="Sprite2D" parent="CanvasLayer/ParallaxBackground"]
+position = Vector2(44, 20)
+texture = ExtResource("7_6mgdb")
+hframes = 3
+
+[node name="ToolIcons" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/EditorTool2"]
+texture = ExtResource("8_q64p8")
+hframes = 3
+frame = 1
+
+[node name="EditorTool3" type="Sprite2D" parent="CanvasLayer/ParallaxBackground"]
+position = Vector2(68, 20)
+texture = ExtResource("7_6mgdb")
+hframes = 3
+
+[node name="ToolIcons" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/EditorTool3"]
+texture = ExtResource("8_q64p8")
+hframes = 3
+frame = 2
+
+[node name="EditorSettings" type="Sprite2D" parent="CanvasLayer/ParallaxBackground"]
+position = Vector2(20, 44)
+texture = ExtResource("7_6mgdb")
+hframes = 3
+frame = 2
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -32)
 limit_left = 0
 limit_right = 256
 limit_bottom = 0
@@ -210,5 +239,13 @@ drag_vertical_offset = 1.0
 drag_top_margin = 0.47
 editor_draw_limits = true
 editor_draw_drag_margin = true
+
+[node name="Pointer" type="Sprite2D" parent="."]
+z_index = 6
+position = Vector2(80, -72)
+texture = ExtResource("8_q64p8")
+centered = false
+offset = Vector2(0, -8)
+hframes = 3
 
 [connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="_on_finished"]

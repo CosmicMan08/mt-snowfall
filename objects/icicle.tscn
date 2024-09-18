@@ -175,6 +175,7 @@ libraries = {
 stream = ExtResource("4_ojter")
 volume_db = -9.503
 mix_target = 2
+bus = &"Icicle"
 script = ExtResource("5_aoagm")
 
 [connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="_on_finished"]

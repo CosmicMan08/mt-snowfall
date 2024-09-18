@@ -18,10 +18,10 @@ func _process(delta):
 		$AnimationPlayer.play("block_blow")
 		$fwoosh.playing = true
 		
-	if fella in $Area2Dagain.get_overlapping_bodies():
+	if fella in $Area2Dagain.get_overlapping_bodies() and not tilemap in $Area2Dthethird.get_overlapping_bodies():
 		if fella.get_node("Body").flip_h: position.x += -1
 		else: position.x += 1
 		$skrt.playing = true
-		if tilemap in $Area2Dthethird.get_overlapping_bodies():
-			if fella.get_node("Body").flip_h: position.x += 1.1
-			else: position.x += -1.1
+		#if tilemap in $Area2Dthethird.get_overlapping_bodies():
+		#	if fella.get_node("Body").flip_h: position.x += 1.1
+		#	else: position.x += -1.1

@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dp5icrpjiejic" path="res://objects/platform.tscn" id="5_gx0aj"]
 [ext_resource type="PackedScene" uid="uid://bvh1u6bs0kwwg" path="res://objects/snowball.tscn" id="7_4p438"]
 [ext_resource type="PackedScene" uid="uid://cb82ameh2l7nw" path="res://objects/fella.tscn" id="8_mw2lg"]
-[ext_resource type="PackedScene" path="res://objects/end_ball.tscn" id="9_owi47"]
+[ext_resource type="PackedScene" uid="uid://g38fpbmwcqpq" path="res://objects/end_ball.tscn" id="9_owi47"]
 [ext_resource type="Texture2D" uid="uid://bv4add4vqmisy" path="res://graphics/mountain bg.png" id="10_163w2"]
 [ext_resource type="PackedScene" uid="uid://bbgywvn4sk7nd" path="res://game UI.tscn" id="11_knh8n"]
 [ext_resource type="PackedScene" uid="uid://cqhotnuhn8wn2" path="res://objects/icicle.tscn" id="11_skdo0"]
@@ -66,7 +66,6 @@ disabled = true
 position = Vector2(128, -472)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-follow_viewport_enabled = true
 
 [node name="ParallaxBackground2" type="ParallaxBackground" parent="CanvasLayer"]
 
@@ -131,5 +130,9 @@ position = Vector2(80, -360)
 
 [node name="StaticBody2D15" parent="." instance=ExtResource("11_skdo0")]
 position = Vector2(88, -360)
+
+[node name="Node" type="Node" parent="."]
+
+[node name="15,70" type="Node" parent="Node"]
 
 [connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="_on_finished"]

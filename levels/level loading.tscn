@@ -34,4 +34,8 @@ autoplay = true
 mix_target = 2
 script = ExtResource("8_p4kti")
 
+[node name="Node" type="Node" parent="."]
+
+[node name="12,60" type="Node" parent="Node"]
+
 [connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="_on_finished"]

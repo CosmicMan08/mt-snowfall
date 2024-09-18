@@ -116,7 +116,7 @@ func _physics_process(delta):
 			
 		#move aaa
 		var direction = Input.get_axis("move_left", "move_right")
-		print(direction)
+		#print(direction)
 		if direction:
 			if isFloating: velocity.x = direction * FLOAT_SPEED + wind_dir
 			else: velocity.x = direction * SPEED + wind_dir
@@ -160,11 +160,18 @@ func _physics_process(delta):
 		#snowball stuff
 		if hitfall_timer > 0:
 			$CollisionShape2D.disabled = true
+			if not is_in_group("wrapless"):
+				$CollisionShape2D2.disabled = true
+				$CollisionShape2D3.disabled = true
 			hitfall_timer -= 1
 			if $AnimationPlayer.current_animation != "fox_snowballed":
 				$AnimationPlayer.play("fox_snowballed")
 		elif not area_coll($Area2D.get_overlapping_bodies()):
+			#print($Area2D.get_overlapping_bodies())
 			$CollisionShape2D.disabled = false
+			if not is_in_group("wrapless"):
+				$CollisionShape2D2.disabled = false
+				$CollisionShape2D3.disabled = false
 
 	was_on_floor = is_on_floor()
 
